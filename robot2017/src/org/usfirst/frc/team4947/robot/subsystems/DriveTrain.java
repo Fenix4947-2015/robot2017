@@ -22,7 +22,7 @@ public class DriveTrain extends Subsystem {
 	public CANTalon rightMotor1 = new CANTalon(4); // encoder
 	public CANTalon rightMotor2 = new CANTalon(5);
 	public CANTalon rightMotor3 = new CANTalon(6);
-	
+		
 	public Solenoid speedSolenoid = new Solenoid(1);
 	public Solenoid ptoSolenoid = new Solenoid(2);
 	
