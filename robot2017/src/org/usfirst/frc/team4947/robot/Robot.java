@@ -12,9 +12,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
-import org.usfirst.frc.team4947.robot.subsystems.Gripper;
-import org.usfirst.frc.team4947.robot.subsystems.Intake;
-import org.usfirst.frc.team4947.robot.subsystems.Winch;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -24,10 +21,10 @@ import org.usfirst.frc.team4947.robot.subsystems.Winch;
  */
 public class Robot extends IterativeRobot {
 
-	public static final DriveTrain driveTrain = new DriveTrain();
-	public static final Gripper gripper = new Gripper();
-	public static final Intake intake = new Intake();
-	public static final Winch winch = new Winch();
+	public static DriveTrain driveTrain;
+	public static Gripper gripper;
+	public static Intake intake;
+	public static Winch winch;
 	
 	public static OI oi;
 
@@ -41,6 +38,12 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
+		
+		driveTrain = new DriveTrain();
+		gripper = new Gripper();
+		intake = new Intake();
+		winch = new Winch();
+		
 		// chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		// SmartDashboard.putData("Auto mode", chooser);

@@ -8,6 +8,7 @@ import com.ctre.CANTalon.TalonControlMode;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DriveTrain extends Subsystem {
@@ -24,6 +25,9 @@ public class DriveTrain extends Subsystem {
 	
 	public AnalogGyro gyro = new AnalogGyro(1);
 	
+	public Counter encoderLeft = new Counter(0);
+	public Counter encoderRight = new Counter(1);
+	
 	public RobotDrive robotDrive = new RobotDrive(leftMotor1, rightMotor1);
 
 	public DriveTrain()
@@ -37,6 +41,12 @@ public class DriveTrain extends Subsystem {
 		rightMotor2.set(rightMotor1.getDeviceID());
 		rightMotor3.setControlMode(TalonControlMode.Follower.value);
 		rightMotor3.set(rightMotor1.getDeviceID());
+		
+		encoderLeft.setDistancePerPulse(10);
+		encoderRight.setDistancePerPulse(10);
+		
+		encoderLeft.reset();
+		encoderRight.reset();
 	}
 	
     public void initDefaultCommand() {

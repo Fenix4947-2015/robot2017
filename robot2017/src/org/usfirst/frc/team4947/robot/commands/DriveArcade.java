@@ -4,6 +4,7 @@ import org.usfirst.frc.team4947.robot.Robot;
 import org.usfirst.frc.team4947.robot.OI.XBoxAxis;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -24,6 +25,11 @@ public class DriveArcade extends Command {
     	double rotateValue = Robot.oi.getJoystickDriverAxis(XBoxAxis.LeftStickX, 0.1);
     	
     	Robot.driveTrain.robotDrive.arcadeDrive(moveValue, rotateValue);
+    	double distLeft = Robot.driveTrain.encoderLeft.getDistance();
+    	double distRight = Robot.driveTrain.encoderRight.getDistance();
+    	
+    	SmartDashboard.putNumber("encoderLeft", distLeft);
+    	SmartDashboard.putNumber("encoderRight", distRight);
     }
 
     // Make this return true when this Command no longer needs to run execute()

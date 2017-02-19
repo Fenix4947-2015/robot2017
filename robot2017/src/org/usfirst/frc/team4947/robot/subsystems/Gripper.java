@@ -19,7 +19,7 @@ public class Gripper extends Subsystem {
     public Solenoid upSolenoid = new Solenoid(4);
     public Solenoid extendSolenoid = new Solenoid(5);
     
-    public DigitalInput gearInput = new DigitalInput(1);
+    public DigitalInput gearInput = new DigitalInput(2);
 
     public void initDefaultCommand() {
         setDefaultCommand(new GripperDefault());

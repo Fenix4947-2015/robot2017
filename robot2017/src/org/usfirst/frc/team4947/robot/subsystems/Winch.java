@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Winch extends Subsystem {
 
-    public Solenoid openSolenoid = new Solenoid(5);
+    public Solenoid openSolenoid = new Solenoid(6);
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
