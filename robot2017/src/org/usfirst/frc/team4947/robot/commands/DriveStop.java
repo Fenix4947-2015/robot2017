@@ -1,13 +1,16 @@
 package org.usfirst.frc.team4947.robot.commands;
 
+import org.usfirst.frc.team4947.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class GripperDefault extends Command {
+public class DriveStop extends Command {
 
-    public GripperDefault() {
+    public DriveStop() {
+    	requires(Robot.driveTrain);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -18,6 +21,12 @@ public class GripperDefault extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.driveTrain.leftMotor1.set(0.0);
+    	Robot.driveTrain.leftMotor2.set(0.0);
+    	Robot.driveTrain.leftMotor3.set(0.0);
+    	Robot.driveTrain.rightMotor1.set(0.0);
+    	Robot.driveTrain.rightMotor2.set(0.0);
+    	Robot.driveTrain.rightMotor3.set(0.0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -32,5 +41,11 @@ public class GripperDefault extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	Robot.driveTrain.leftMotor1.set(0.0);
+    	Robot.driveTrain.leftMotor2.set(0.0);
+    	Robot.driveTrain.leftMotor3.set(0.0);
+    	Robot.driveTrain.rightMotor1.set(0.0);
+    	Robot.driveTrain.rightMotor2.set(0.0);
+    	Robot.driveTrain.rightMotor3.set(0.0);
     }
 }
