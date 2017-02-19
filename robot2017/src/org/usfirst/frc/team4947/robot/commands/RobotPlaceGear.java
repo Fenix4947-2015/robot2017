@@ -36,7 +36,7 @@ public class RobotPlaceGear extends Command {
 		double BlobCenterY[] = table.getNumberArray("centerY",defaultValue);
 		double Area[] = table.getNumberArray("area",defaultValue);		
 		double[] Xprocessing = new double[0];
-		//1280 X 720 pixels in image // en fait, c'Est 640 x 360 sur la webcam, dans sa config par défaut. 
+		//1280 X 720 pixels in image  ... en fait cEst 640 x 360 sur la webcam, dans sa config par defaut. 
 		boolean itworks = true;
 		if(itworks)
 			if(1==BlobCenterX.length)
