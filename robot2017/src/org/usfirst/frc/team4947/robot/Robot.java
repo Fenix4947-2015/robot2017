@@ -1,10 +1,13 @@
 
 package org.usfirst.frc.team4947.robot;
 
+//import org.usfirst.frc.team4947.robot.subsystems.Camera;
+//import org.usfirst.frc.team4947.robot.subsystems.Camera;
 import org.usfirst.frc.team4947.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4947.robot.subsystems.Gripper;
 import org.usfirst.frc.team4947.robot.subsystems.Intake;
 import org.usfirst.frc.team4947.robot.subsystems.Winch;
+
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -25,6 +28,9 @@ public class Robot extends IterativeRobot {
 	public static Gripper gripper;
 	public static Intake intake;
 	public static Winch winch;
+    //public static Camera camera1;
+   // public static Camera camera2;
+   // public static CameraServer camera1;
 	
 	public static OI oi;
 
@@ -37,13 +43,14 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-		oi = new OI();
+		
 		
 		driveTrain = new DriveTrain();
 		gripper = new Gripper();
 		intake = new Intake();
 		winch = new Winch();
-		
+		//camera1 = new CameraServer();
+		oi = new OI();
 		// chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		// SmartDashboard.putData("Auto mode", chooser);

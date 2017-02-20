@@ -20,9 +20,9 @@ public class DriveTrain extends Subsystem {
 	public CANTalon rightMotor2 = new CANTalon(14);
 	public CANTalon rightMotor3 = new CANTalon(18);
 		
-	//public Solenoid speedSolenoid = new Solenoid(7);
-	//public Solenoid ptoSolenoidLeft = new Solenoid(6);
-	//public Solenoid ptoSolenoidRight = new Solenoid(2);
+	public Solenoid speedSolenoid = new Solenoid(7);
+	public Solenoid ptoSolenoidLeft = new Solenoid(6);
+	public Solenoid ptoSolenoidRight = new Solenoid(2);
 	
 	public AnalogGyro gyro = new AnalogGyro(1);
 	

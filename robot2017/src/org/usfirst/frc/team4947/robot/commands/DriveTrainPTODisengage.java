@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class DriveTrainPTODisengage extends Command {
 
     public DriveTrainPTODisengage() {
-    	//requires(Robot.driveTrain);
+    	requires(Robot.driveTrain);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -22,8 +22,8 @@ public class DriveTrainPTODisengage extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	//Robot.driveTrain.ptoSolenoidLeft.set(false);    	
-    	//Robot.driveTrain.ptoSolenoidRight.set(false);
+    	Robot.driveTrain.ptoSolenoidLeft.set(false);    	
+    	Robot.driveTrain.ptoSolenoidRight.set(false);
     	
     }
 

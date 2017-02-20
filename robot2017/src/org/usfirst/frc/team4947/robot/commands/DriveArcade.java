@@ -26,8 +26,8 @@ public class DriveArcade extends Command {
     	double rotateValue = Robot.oi.getJoystickDriverAxis(XBoxAxis.LeftStickX, 0.1);
     	
     	Robot.driveTrain.robotDrive.arcadeDrive(moveValue, rotateValue);
-    	double distLeft = Robot.driveTrain.encoderLeft.getDistance();
-    	double distRight = Robot.driveTrain.encoderRight.getDistance();
+    	double distLeft = Robot.driveTrain.encoderLeft.get();//.getDistance();
+    	double distRight = Robot.driveTrain.encoderRight.get();//.getDistance();
     	
     	Robot.driveTrain.robotDrive2.arcadeDrive(moveValue, rotateValue);
     	Robot.driveTrain.robotDrive3.arcadeDrive(moveValue, rotateValue);

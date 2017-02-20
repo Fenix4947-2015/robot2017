@@ -2,11 +2,30 @@ package org.usfirst.frc.team4947.robot;
 
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 
+import org.usfirst.frc.team4947.robot.commands.DriveArcade;
+import org.usfirst.frc.team4947.robot.commands.DriveForward;
+import org.usfirst.frc.team4947.robot.commands.DriveRotate;
+import org.usfirst.frc.team4947.robot.commands.DriveStop;
 import org.usfirst.frc.team4947.robot.commands.DriveTrainPTODisengage;
 import org.usfirst.frc.team4947.robot.commands.DriveTrainPTOEngage;
+import org.usfirst.frc.team4947.robot.commands.GripperClose;
+import org.usfirst.frc.team4947.robot.commands.GripperDefault;
+import org.usfirst.frc.team4947.robot.commands.GripperDown;
+import org.usfirst.frc.team4947.robot.commands.GripperExtend;
+import org.usfirst.frc.team4947.robot.commands.GripperMoveTo;
+import org.usfirst.frc.team4947.robot.commands.GripperOpen;
+import org.usfirst.frc.team4947.robot.commands.GripperRetract;
+import org.usfirst.frc.team4947.robot.commands.GripperUp;
+import org.usfirst.frc.team4947.robot.commands.IntakeDefault;
+import org.usfirst.frc.team4947.robot.commands.IntakeIn;
+import org.usfirst.frc.team4947.robot.commands.IntakeOut;
+import org.usfirst.frc.team4947.robot.commands.RobotPlaceGear;
+import org.usfirst.frc.team4947.robot.commands.WinchClose;
+import org.usfirst.frc.team4947.robot.commands.WinchOpen;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -88,7 +107,32 @@ public class OI {
         //driverB.whileHeld(new BallShoot());
         //driverX.whenPressed(new BallAlign());
         driverA.whenPressed(new DriveTrainPTOEngage());
-        driverA.whenReleased(new DriveTrainPTODisengage());
+        driverB.whenReleased(new DriveTrainPTODisengage());
+        
+        SmartDashboard.putData("DriveArcade", new DriveArcade());
+        SmartDashboard.putData("DriveForward", new DriveForward(0.5,0.8));
+        SmartDashboard.putData("DriveRotate", new DriveRotate(0.5,0.8));
+        SmartDashboard.putData("DriveStop", new DriveStop());
+        SmartDashboard.putData("DriveTrainPTODisengage", new              DriveTrainPTODisengage());
+        SmartDashboard.putData("DriveTrainPTOEngage", new DriveTrainPTOEngage());
+        
+        SmartDashboard.putData("GripperClose", new GripperClose());
+        SmartDashboard.putData("GripperDefault", new GripperDefault());
+        SmartDashboard.putData("GripperDown", new GripperDown());
+        SmartDashboard.putData("GripperExtend", new GripperExtend());
+        SmartDashboard.putData("GripperMoveTo", new GripperMoveTo(50,0.1));
+        SmartDashboard.putData("GripperOpen", new GripperOpen());
+        SmartDashboard.putData("GripperRetract", new GripperRetract());
+        SmartDashboard.putData("GripperUp", new GripperUp());
+        
+        SmartDashboard.putData("IntakeDefault", new IntakeDefault());
+        SmartDashboard.putData("IntakeIn", new IntakeIn());
+        SmartDashboard.putData("IntakeOut", new IntakeOut());
+        
+        SmartDashboard.putData("RobotPlaceGear", new RobotPlaceGear());
+        
+        SmartDashboard.putData("WinchClose", new WinchClose());
+        SmartDashboard.putData("WinchOpen", new WinchOpen());
 
     }
     
