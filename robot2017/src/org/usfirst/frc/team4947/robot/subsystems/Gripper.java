@@ -15,9 +15,9 @@ public class Gripper extends Subsystem {
 
     public CANTalon motor = new CANTalon(8); // encoder
     
-    public Solenoid openSolenoid = new Solenoid(3);
-    public Solenoid upSolenoid = new Solenoid(4);
-    public Solenoid extendSolenoid = new Solenoid(5);
+    public Solenoid openSolenoid = new Solenoid(0);
+    public Solenoid upSolenoid = new Solenoid(1);
+    public Solenoid extendSolenoid = new Solenoid(4);
     
     public DigitalInput gearInput = new DigitalInput(2);
 

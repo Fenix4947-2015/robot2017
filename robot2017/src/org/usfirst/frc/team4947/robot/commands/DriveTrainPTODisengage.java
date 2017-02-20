@@ -1,8 +1,8 @@
 package org.usfirst.frc.team4947.robot.commands;
 
 import org.usfirst.frc.team4947.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -10,20 +10,20 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveTrainPTODisengage extends Command {
 
     public DriveTrainPTODisengage() {
-    	requires(Robot.driveTrain);
+    	//requires(Robot.driveTrain);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() {
-    	
+    protected void initialize() {    	
     	setTimeout(0.5);
-    }
+	}
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.ptoSolenoid.set(false);
+    	//Robot.driveTrain.ptoSolenoidLeft.set(false);    	
+    	//Robot.driveTrain.ptoSolenoidRight.set(false);
     	
     }
 

@@ -1,6 +1,10 @@
 package org.usfirst.frc.team4947.robot;
 
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
+
+import org.usfirst.frc.team4947.robot.commands.DriveTrainPTODisengage;
+import org.usfirst.frc.team4947.robot.commands.DriveTrainPTOEngage;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -78,6 +82,13 @@ public class OI {
         JoystickButton helperRightStick = new JoystickButton(joystickHelper, XBoxButton.RightStick.getValue());
 
         // TODO Link button state to execute commands
+     // TODO Link button state to execute commands
+       // driverA.whileHeld(new BallPickUp());
+       // driverB.whileHeld(new BallAlignShoot());
+        //driverB.whileHeld(new BallShoot());
+        //driverX.whenPressed(new BallAlign());
+        driverA.whenPressed(new DriveTrainPTOEngage());
+        driverA.whenReleased(new DriveTrainPTODisengage());
 
     }
     

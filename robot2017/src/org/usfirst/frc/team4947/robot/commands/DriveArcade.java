@@ -21,6 +21,7 @@ public class DriveArcade extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
     	double moveValue = Robot.oi.getJoystickDriverAxis(XBoxAxis.LeftTrigger) - Robot.oi.getJoystickDriverAxis(XBoxAxis.RightTrigger);
     	double rotateValue = Robot.oi.getJoystickDriverAxis(XBoxAxis.LeftStickX, 0.1);
     	
@@ -28,8 +29,12 @@ public class DriveArcade extends Command {
     	double distLeft = Robot.driveTrain.encoderLeft.getDistance();
     	double distRight = Robot.driveTrain.encoderRight.getDistance();
     	
+    	Robot.driveTrain.robotDrive2.arcadeDrive(moveValue, rotateValue);
+    	Robot.driveTrain.robotDrive3.arcadeDrive(moveValue, rotateValue);
+    	
     	SmartDashboard.putNumber("encoderLeft", distLeft);
     	SmartDashboard.putNumber("encoderRight", distRight);
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

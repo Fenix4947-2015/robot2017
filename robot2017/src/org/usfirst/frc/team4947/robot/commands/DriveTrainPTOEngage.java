@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveTrainPTOEngage extends Command {
 
     public DriveTrainPTOEngage() {
-    	requires(Robot.driveTrain);
+    	//requires(Robot.driveTrain);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -22,7 +22,8 @@ public class DriveTrainPTOEngage extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.ptoSolenoid.set(true);
+    	//Robot.driveTrain.ptoSolenoidLeft.set(true);
+    	//Robot.driveTrain.ptoSolenoidRight.set(true);
     }
 
     // Make this return true when this Command no longer needs to run execute()

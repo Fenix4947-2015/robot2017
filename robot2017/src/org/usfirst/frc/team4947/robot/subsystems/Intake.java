@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Intake extends Subsystem {
 
-    public CANTalon motor = new CANTalon(7);
+    public CANTalon motor = new CANTalon(16);
 
     public void initDefaultCommand() {
         setDefaultCommand(new IntakeDefault());
