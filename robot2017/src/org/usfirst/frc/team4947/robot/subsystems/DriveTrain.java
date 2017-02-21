@@ -21,8 +21,8 @@ public class DriveTrain extends Subsystem {
 	public CANTalon rightMotor3 = new CANTalon(18);
 		
 	public Solenoid speedSolenoid = new Solenoid(7);
-	public Solenoid ptoSolenoidLeft = new Solenoid(6);
-	public Solenoid ptoSolenoidRight = new Solenoid(2);
+	public Solenoid ptoSolenoid = new Solenoid(6);
+	//public Solenoid ptoSolenoidRight = new Solenoid(2);
 	
 	public AnalogGyro gyro = new AnalogGyro(1);
 	
@@ -57,11 +57,20 @@ public class DriveTrain extends Subsystem {
 		//rightMotor3.setControlMode(TalonControlMode.Follower.value);
 		//rightMotor3.set(rightMotor1.getDeviceID());
 		
-		encoderLeft.setDistancePerPulse(10);
-		encoderRight.setDistancePerPulse(10);
+		encoderLeft.setMaxPeriod(0.1);
+		encoderLeft.setUpdateWhenEmpty(true);
+		encoderLeft.setReverseDirection(false);
+		encoderLeft.setSamplesToAverage(10);
+		encoderLeft.setDistancePerPulse(12);
 		
-		encoderLeft.reset();
-		encoderRight.reset();
+		encoderRight.setMaxPeriod(0.1);
+		encoderRight.setUpdateWhenEmpty(true);
+		encoderRight.setReverseDirection(false);
+		encoderRight.setSamplesToAverage(10);
+		encoderRight.setDistancePerPulse(12);
+		
+		//encoderLeft.reset();
+		//encoderRight.reset();
 	}
 	
     public void initDefaultCommand() {

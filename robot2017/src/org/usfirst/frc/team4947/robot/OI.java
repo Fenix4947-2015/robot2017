@@ -2,9 +2,13 @@ package org.usfirst.frc.team4947.robot;
 
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 
+import org.usfirst.frc.team4947.robot.commands.DoorClose;
+import org.usfirst.frc.team4947.robot.commands.DoorOpen;
 import org.usfirst.frc.team4947.robot.commands.DriveArcade;
+import org.usfirst.frc.team4947.robot.commands.DriveFast;
 import org.usfirst.frc.team4947.robot.commands.DriveForward;
 import org.usfirst.frc.team4947.robot.commands.DriveRotate;
+import org.usfirst.frc.team4947.robot.commands.DriveSlow;
 import org.usfirst.frc.team4947.robot.commands.DriveStop;
 import org.usfirst.frc.team4947.robot.commands.DriveTrainPTODisengage;
 import org.usfirst.frc.team4947.robot.commands.DriveTrainPTOEngage;
@@ -113,6 +117,8 @@ public class OI {
         SmartDashboard.putData("DriveForward", new DriveForward(0.5,0.8));
         SmartDashboard.putData("DriveRotate", new DriveRotate(0.5,0.8));
         SmartDashboard.putData("DriveStop", new DriveStop());
+        SmartDashboard.putData("DriveFast", new DriveFast());
+        SmartDashboard.putData("DriveSlow", new DriveSlow());
         SmartDashboard.putData("DriveTrainPTODisengage", new              DriveTrainPTODisengage());
         SmartDashboard.putData("DriveTrainPTOEngage", new DriveTrainPTOEngage());
         
@@ -124,6 +130,9 @@ public class OI {
         SmartDashboard.putData("GripperOpen", new GripperOpen());
         SmartDashboard.putData("GripperRetract", new GripperRetract());
         SmartDashboard.putData("GripperUp", new GripperUp());
+        SmartDashboard.putData("DoorOpen", new DoorOpen());
+        SmartDashboard.putData("DoorClose", new DoorClose());
+
         
         SmartDashboard.putData("IntakeDefault", new IntakeDefault());
         SmartDashboard.putData("IntakeIn", new IntakeIn());

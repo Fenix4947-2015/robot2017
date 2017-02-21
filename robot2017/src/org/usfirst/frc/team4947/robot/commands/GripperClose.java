@@ -22,7 +22,7 @@ public class GripperClose extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.gripper.openSolenoid.set(false);
+    	Robot.gripper.openGripperSolenoid.set(false);
     }
 
     // Make this return true when this Command no longer needs to run execute()

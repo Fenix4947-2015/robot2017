@@ -22,8 +22,8 @@ public class DriveTrainPTODisengage extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.ptoSolenoidLeft.set(false);    	
-    	Robot.driveTrain.ptoSolenoidRight.set(false);
+    	Robot.driveTrain.ptoSolenoid.set(true);    	
+    	
     	
     }
 
