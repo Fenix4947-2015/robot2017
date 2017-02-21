@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Counter;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DriveTrain extends Subsystem {
@@ -26,8 +27,10 @@ public class DriveTrain extends Subsystem {
 	
 	public AnalogGyro gyro = new AnalogGyro(1);
 	
-	public Counter encoderLeft = new Counter(0);
-	public Counter encoderRight = new Counter(1);
+	public Counter encoderLeft;// = new Counter();//(0);//0);
+	public Counter encoderRight = new Counter();//(1);//1);
+	//public Encoder encLeft = new Encoder(0, 0);
+	//public Encoder encRight = new Encoder(1, 1);
 	
 	public RobotDrive robotDrive = new RobotDrive(leftMotor1, rightMotor1);
 	public RobotDrive robotDrive2 = new RobotDrive(leftMotor2, rightMotor2);
@@ -57,17 +60,28 @@ public class DriveTrain extends Subsystem {
 		//rightMotor3.setControlMode(TalonControlMode.Follower.value);
 		//rightMotor3.set(rightMotor1.getDeviceID());
 		
+		encoderLeft= new Counter();
+		encoderLeft.setUpSource(0);
+		encoderLeft.setUpDownCounterMode();
 		encoderLeft.setMaxPeriod(0.1);
 		encoderLeft.setUpdateWhenEmpty(true);
 		encoderLeft.setReverseDirection(false);
 		encoderLeft.setSamplesToAverage(10);
 		encoderLeft.setDistancePerPulse(12);
+		//encoderLeft.start();
+		//encoderLeft.startLiveWindowMode();// ???
 		
+		
+	//	encLeft.setDistancePerPulse(12);
+		encoderRight= new Counter();
+		encoderRight.setUpSource(1);
+		encoderRight.setUpDownCounterMode();
 		encoderRight.setMaxPeriod(0.1);
 		encoderRight.setUpdateWhenEmpty(true);
 		encoderRight.setReverseDirection(false);
 		encoderRight.setSamplesToAverage(10);
 		encoderRight.setDistancePerPulse(12);
+		encoderRight.startLiveWindowMode();// to add ???
 		
 		//encoderLeft.reset();
 		//encoderRight.reset();

@@ -1,6 +1,9 @@
 
 package org.usfirst.frc.team4947.robot;
 
+import org.usfirst.frc.team4947.robot.commands.AutoDefault;
+import org.usfirst.frc.team4947.robot.commands.AutoForward;
+import org.usfirst.frc.team4947.robot.commands.DriveTrainPTODisengage;
 //import org.usfirst.frc.team4947.robot.subsystems.Camera;
 //import org.usfirst.frc.team4947.robot.subsystems.Camera;
 import org.usfirst.frc.team4947.robot.subsystems.DriveTrain;
@@ -14,6 +17,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -35,7 +39,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 
 	Command autonomousCommand;
-	SendableChooser<Command> chooser = new SendableChooser<>();
+	 SendableChooser autonomousChooser = new SendableChooser();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -55,6 +59,13 @@ public class Robot extends IterativeRobot {
 		// chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		// SmartDashboard.putData("Auto mode", chooser);
+		
+		autonomousChooser.addDefault("Auto Default", new AutoDefault());
+		autonomousChooser.addDefault("Auto Forward", new AutoForward());
+		//autonomousCommand = new AutoDefault();
+		
+		SmartDashboard.putData("AutoMode", autonomousChooser);
+	
 	}
 
 	/**
@@ -85,7 +96,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = chooser.getSelected();
+		autonomousCommand = (Command)autonomousChooser.getSelected();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -96,7 +107,9 @@ public class Robot extends IterativeRobot {
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
+		{
 			autonomousCommand.start();
+		}
 	}
 
 	/**
