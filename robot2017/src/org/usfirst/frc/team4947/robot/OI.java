@@ -24,6 +24,7 @@ import org.usfirst.frc.team4947.robot.commands.GripperUp;
 import org.usfirst.frc.team4947.robot.commands.IntakeDefault;
 import org.usfirst.frc.team4947.robot.commands.IntakeIn;
 import org.usfirst.frc.team4947.robot.commands.IntakeOut;
+import org.usfirst.frc.team4947.robot.commands.RobotLift;
 import org.usfirst.frc.team4947.robot.commands.RobotPlaceGear;
 import org.usfirst.frc.team4947.robot.commands.WinchClose;
 import org.usfirst.frc.team4947.robot.commands.WinchOpen;
@@ -144,7 +145,7 @@ public class OI {
         
         SmartDashboard.putData("WinchClose", new WinchClose());
         SmartDashboard.putData("WinchOpen", new WinchOpen());
-
+        SmartDashboard.putData("RobotLift", new RobotLift());
     }
     
     public double getJoystickDriverAxis(XBoxAxis axis) {

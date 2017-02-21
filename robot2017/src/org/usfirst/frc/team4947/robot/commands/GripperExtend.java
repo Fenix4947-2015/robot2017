@@ -16,7 +16,7 @@ public class GripperExtend extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	setTimeout(0.5);
+    	setTimeout(0.05);
     }
 
     // Called repeatedly when this Command is scheduled to run

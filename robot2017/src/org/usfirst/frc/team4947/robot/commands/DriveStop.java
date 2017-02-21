@@ -27,6 +27,8 @@ public class DriveStop extends Command {
     	Robot.driveTrain.rightMotor1.set(0.0);
     	Robot.driveTrain.rightMotor2.set(0.0);
     	Robot.driveTrain.rightMotor3.set(0.0);
+    	Robot.driveTrain.ptoSolenoid.set(true);
+    	Robot.driveTrain.speedSolenoid.set(false);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -41,11 +43,5 @@ public class DriveStop extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Robot.driveTrain.leftMotor1.set(0.0);
-    	Robot.driveTrain.leftMotor2.set(0.0);
-    	Robot.driveTrain.leftMotor3.set(0.0);
-    	Robot.driveTrain.rightMotor1.set(0.0);
-    	Robot.driveTrain.rightMotor2.set(0.0);
-    	Robot.driveTrain.rightMotor3.set(0.0);
     }
 }

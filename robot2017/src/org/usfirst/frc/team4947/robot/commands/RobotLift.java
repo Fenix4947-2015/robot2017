@@ -14,7 +14,9 @@ public class RobotLift extends CommandGroup {
         // these will run in order.
     	
     	addSequential(new DriveStop());
-    	//addSequential(new )
+    	addSequential(new WinchClose());
+    	addSequential(new DriveTrainPTOEngage());
+    	addSequential(new DriveArcade());
 
         // To run multiple commands at the same time,
         // use addParallel()

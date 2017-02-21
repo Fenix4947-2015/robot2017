@@ -18,14 +18,14 @@ public class DriveArcade extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.driveTrain.ptoSolenoid.set(true); // true Disengages PTO.
-    	Robot.driveTrain.speedSolenoid.set(true); // true makes it slow. TODO VALIDATE
+    	//Robot.driveTrain.speedSolenoid.set(true); // true makes it slow. TODO VALIDATE
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	double moveValue = Robot.oi.getJoystickDriverAxis(XBoxAxis.LeftTrigger) - Robot.oi.getJoystickDriverAxis(XBoxAxis.RightTrigger);
-    	double rotateValue = Robot.oi.getJoystickDriverAxis(XBoxAxis.LeftStickX, 0.1);
+    	double moveValue = -Robot.oi.getJoystickDriverAxis(XBoxAxis.LeftTrigger) + Robot.oi.getJoystickDriverAxis(XBoxAxis.RightTrigger);
+    	double rotateValue = -Robot.oi.getJoystickDriverAxis(XBoxAxis.LeftStickX, 0.1)*0.65-moveValue*0.86;
     	
     	Robot.driveTrain.robotDrive.arcadeDrive(moveValue, rotateValue);
     	double distLeft = Robot.driveTrain.encoderLeft.get();//.getDistance();

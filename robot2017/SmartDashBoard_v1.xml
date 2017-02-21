@@ -1,0 +1,99 @@
+<xml version="1.0">
+<dashboard>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.CameraServerViewer">
+		<location x="1302" y="-1"/>
+		<width>709</width>
+		<height>393</height>
+		<property name="Camera Choice" value="USB Camera 1"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.CameraServerViewer">
+		<location x="428" y="-9"/>
+		<width>1007</width>
+		<height>671</height>
+		<property name="Camera Choice" value=""/>
+	</static-widget>
+	<widget field="encoderLeft" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="1052" y="942"/>
+	</widget>
+	<widget field="GripperRetract" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1748" y="571"/>
+	</widget>
+	<widget field="DriveSlow" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1765" y="894"/>
+	</widget>
+	<widget field="DriveTrainPTODisengage" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1291" y="812"/>
+	</widget>
+	<widget field="DriveForward" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1431" y="889"/>
+	</widget>
+	<widget field="WinchClose" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1084" y="798"/>
+	</widget>
+	<widget field="IntakeDefault" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="497" y="680"/>
+	</widget>
+	<widget field="DriveArcade" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1595" y="880"/>
+	</widget>
+	<widget field="DriveTrainPTOEngage" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1300" y="771"/>
+	</widget>
+	<widget field="GripperDown" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1734" y="527"/>
+	</widget>
+	<widget field="GripperMoveManual" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1418" y="500"/>
+	</widget>
+	<widget field="WinchOpen" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1087" y="762"/>
+	</widget>
+	<widget field="GripperExtend" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1426" y="574"/>
+	</widget>
+	<widget field="DriveStop" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1610" y="926"/>
+	</widget>
+	<widget field="GripperUp" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1589" y="541"/>
+	</widget>
+	<widget field="GripperMoveTo" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1698" y="417"/>
+	</widget>
+	<widget field="encoderRight" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="1243" y="939"/>
+	</widget>
+	<widget field="GripperClose" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1590" y="612"/>
+	</widget>
+	<widget field="DriveFast" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1771" y="935"/>
+	</widget>
+	<widget field="DoorOpen" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1748" y="689"/>
+	</widget>
+	<widget field="DoorClose" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1753" y="726"/>
+	</widget>
+	<widget field="IntakeIn" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="508" y="752"/>
+	</widget>
+	<widget field="DriveRotate" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1448" y="927"/>
+	</widget>
+	<widget field="GripperDefault" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1446" y="465"/>
+	</widget>
+	<widget field="IntakeOut" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="497" y="717"/>
+	</widget>
+	<widget field="GripperOpen" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1588" y="575"/>
+	</widget>
+	<widget field="RobotPlaceGear" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1387" y="401"/>
+	</widget>
+</dashboard>
+<live-window>
+</live-window>
+</xml>

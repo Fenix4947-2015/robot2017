@@ -17,12 +17,12 @@ public class DriveSlow extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	setTimeout(0.5);    	
+    	setTimeout(0.05);    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.speedSolenoid.set(true); // TODO : ADJUST THE BOOLEAN IN ARCADEDRIVE DEFAULT CONFIG' 
+    	Robot.driveTrain.speedSolenoid.set(false); // TODO : ADJUST THE BOOLEAN IN ARCADEDRIVE DEFAULT CONFIG' 
     }
 
     // Make this return true when this Command no longer needs to run execute()

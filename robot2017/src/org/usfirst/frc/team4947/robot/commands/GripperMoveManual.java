@@ -26,7 +26,7 @@ public class GripperMoveManual extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double rotateValue = Robot.oi.getJoystickDriverAxis(XBoxAxis.LeftStickX, 0.25);
-    	Robot.gripper.motor.set(rotateValue*0.1);
+    	Robot.gripper.motor.set(rotateValue*0.6);
     }
 
     // Make this return true when this Command no longer needs to run execute()
