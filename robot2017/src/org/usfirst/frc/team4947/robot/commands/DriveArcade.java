@@ -18,6 +18,7 @@ public class DriveArcade extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.driveTrain.ptoSolenoid.set(true); // true Disengages PTO.
+    	Robot.driveTrain.speedSolenoid.set(true); // true makes it slow. TODO VALIDATE
     }
 
     // Called repeatedly when this Command is scheduled to run

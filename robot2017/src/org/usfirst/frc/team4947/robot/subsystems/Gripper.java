@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Gripper extends Subsystem {
 
-    public CANTalon motor = new CANTalon(8); // encoder
+    public CANTalon motor = new CANTalon(15); // encoder
     
     public Solenoid openGripperSolenoid = new Solenoid(0);
     public Solenoid upGripperSolenoid = new Solenoid(1);

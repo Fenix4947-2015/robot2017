@@ -16,6 +16,7 @@ import org.usfirst.frc.team4947.robot.commands.GripperClose;
 import org.usfirst.frc.team4947.robot.commands.GripperDefault;
 import org.usfirst.frc.team4947.robot.commands.GripperDown;
 import org.usfirst.frc.team4947.robot.commands.GripperExtend;
+import org.usfirst.frc.team4947.robot.commands.GripperMoveManual;
 import org.usfirst.frc.team4947.robot.commands.GripperMoveTo;
 import org.usfirst.frc.team4947.robot.commands.GripperOpen;
 import org.usfirst.frc.team4947.robot.commands.GripperRetract;
@@ -127,6 +128,7 @@ public class OI {
         SmartDashboard.putData("GripperDown", new GripperDown());
         SmartDashboard.putData("GripperExtend", new GripperExtend());
         SmartDashboard.putData("GripperMoveTo", new GripperMoveTo(50,0.1));
+        SmartDashboard.putData("GripperMoveManual", new GripperMoveManual());
         SmartDashboard.putData("GripperOpen", new GripperOpen());
         SmartDashboard.putData("GripperRetract", new GripperRetract());
         SmartDashboard.putData("GripperUp", new GripperUp());

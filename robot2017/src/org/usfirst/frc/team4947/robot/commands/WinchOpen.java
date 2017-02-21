@@ -21,7 +21,7 @@ public class WinchOpen extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.winch.openSolenoid.set(true);
+    	Robot.winch.WinchOpenSolenoid.set(true);
     }
 
     // Make this return true when this Command no longer needs to run execute()
