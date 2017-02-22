@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4947.robot.subsystems;
 
+import org.usfirst.frc.team4947.robot.Robot;
 import org.usfirst.frc.team4947.robot.commands.DriveArcade;
 
 import com.ctre.CANTalon;
@@ -32,9 +33,9 @@ public class DriveTrain extends Subsystem {
 	//public Encoder encLeft = new Encoder(0, 0);
 	//public Encoder encRight = new Encoder(1, 1);
 	
-	public RobotDrive robotDrive = new RobotDrive(leftMotor1, rightMotor1);
-	public RobotDrive robotDrive2 = new RobotDrive(leftMotor2, rightMotor2);
-	public RobotDrive robotDrive3 = new RobotDrive(leftMotor3, rightMotor3);
+	private RobotDrive robotDrive = new RobotDrive(leftMotor1, rightMotor1);
+	private RobotDrive robotDrive2 = new RobotDrive(leftMotor2, rightMotor2);
+	private RobotDrive robotDrive3 = new RobotDrive(leftMotor3, rightMotor3);
 
 	public DriveTrain()
 	{
@@ -89,6 +90,31 @@ public class DriveTrain extends Subsystem {
 	
     public void initDefaultCommand() {
         setDefaultCommand(new DriveArcade());
+    }
+    
+
+    public void DriveArcadeSafe(double Speed, double Rotation) {
+    	//ptoSolenoid.set(true);
+    	if(ptoSolenoid.get()==true)//pto disengaged
+    	{
+	    	robotDrive.arcadeDrive(Speed, Rotation);   	
+	    	robotDrive2.arcadeDrive(Speed, Rotation);
+	    	robotDrive3.arcadeDrive(Speed, Rotation);
+    	}
+    	else // limitation : cannot move forward or rotate right.
+    	{
+    		if (Speed>0)
+    		{
+    			Speed = 0;    				
+    		}
+    		if (Rotation>0)
+    		{
+    			Rotation = 0;    				
+    		}
+    		robotDrive.arcadeDrive(Speed, Rotation);   	
+	    	robotDrive2.arcadeDrive(Speed, Rotation);
+	    	robotDrive3.arcadeDrive(Speed, Rotation);
+    	}
     }
 }
 

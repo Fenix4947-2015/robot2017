@@ -145,4 +145,14 @@ public class Robot extends IterativeRobot {
 	public void testPeriodic() {
 		LiveWindow.run();
 	}
+	
+
+	/*private void log() {
+		driveTrain.log();
+		intake.log();
+		gripper.log();
+		winch.log();
+		
+	}*/
+
 }

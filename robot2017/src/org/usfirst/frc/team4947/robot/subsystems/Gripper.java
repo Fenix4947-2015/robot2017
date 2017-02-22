@@ -20,10 +20,17 @@ public class Gripper extends Subsystem {
     public Solenoid extendGripperSolenoid = new Solenoid(4);
     public Solenoid openDoorSolenoid = new Solenoid(5);
     
-    public DigitalInput gearInput = new DigitalInput(2);
+    
 
+    
+    public Gripper(){
+    	// Initialize State
+    	openGripperSolenoid.set(true);
+    	openDoorSolenoid.set(true);
+    }
+    
     public void initDefaultCommand() {
-        setDefaultCommand(new GripperDefault());
+        //setDefaultCommand(new GripperDefault());
     }
 }
 

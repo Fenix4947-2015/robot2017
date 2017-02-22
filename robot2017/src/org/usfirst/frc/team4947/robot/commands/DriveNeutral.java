@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveFast extends Command {
+public class DriveNeutral extends Command {
 
-    public DriveFast() {
+    public DriveNeutral() {
     	requires(Robot.driveTrain);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);

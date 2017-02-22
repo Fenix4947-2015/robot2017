@@ -33,12 +33,14 @@ public class DriveRotate extends Command {
     protected void execute() {  
     	if (angle<Robot.driveTrain.gyro.getAngle())
     	{     		
-    	Robot.driveTrain.robotDrive.tankDrive(-speed*convertspd2degpsec, speed*convertspd2degpsec);
+    	//Robot.driveTrain.robotDrive.tankDrive(-speed*convertspd2degpsec, speed*convertspd2degpsec);
+    		Robot.driveTrain.DriveArcadeSafe(0, speed*convertspd2degpsec);
     	}
     	else if (Robot.driveTrain.gyro.getAngle()<angle)
     	{     		
-        	Robot.driveTrain.robotDrive.tankDrive(speed*convertspd2degpsec, -speed*convertspd2degpsec);
-        }
+        	//Robot.driveTrain.robotDrive.tankDrive(speed*convertspd2degpsec, -speed*convertspd2degpsec);
+    		Robot.driveTrain.DriveArcadeSafe(0, -speed*convertspd2degpsec);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -49,7 +51,8 @@ public class DriveRotate extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	// Stop the robot when interrupted
-    	Robot.driveTrain.robotDrive.tankDrive(0, 0);
+    	//Robot.driveTrain.robotDrive.tankDrive(0, 0);
+    	Robot.driveTrain.DriveArcadeSafe(0, 0);
     }
 
     // Called when another command which requires one or more of the same

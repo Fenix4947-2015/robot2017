@@ -29,9 +29,8 @@ public class DriveArcade extends Command {
     	//double rotateValue = -Robot.oi.getJoystickDriverAxis(XBoxAxis.LeftStickX, 0.1)*0.65-moveValue*0.86;
     	double rotateValue = -Robot.oi.getJoystickDriverAxis(XBoxAxis.LeftStickX, 0.1)*0.65;
     	
-    	Robot.driveTrain.robotDrive.arcadeDrive(moveValue, rotateValue);   	
-    	Robot.driveTrain.robotDrive2.arcadeDrive(moveValue, rotateValue);
-    	Robot.driveTrain.robotDrive3.arcadeDrive(moveValue, rotateValue);
+    	Robot.driveTrain.DriveArcadeSafe(SmoothRamp(moveValue,0.1), rotateValue);
+    	
     	
     	SmartDashboard.putNumber("ForwardSpeed", moveValue);
     	SmartDashboard.putNumber("RotationSpeed", rotateValue);
@@ -52,12 +51,31 @@ public class DriveArcade extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.driveTrain.robotDrive.tankDrive(0, 0);
+    	Robot.driveTrain.DriveArcadeSafe(0, 0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
     	end();
+    }
+    
+    public double SmoothRamp(double input, double deadband)
+    {
+    	int order = 2;
+    	double motorStartVoltage = 0.1;
+    	double a = (1-motorStartVoltage)/Math.pow(1-deadband, 2);
+    	if(input>deadband)
+    	{
+    		return Math.signum(input) * (a * Math.pow(input - deadband, 2) + motorStartVoltage);
+    	}
+    	else if (-deadband>input)
+    	{
+        	return Math.signum(input) * (a * Math.pow(Math.abs(input) - deadband, 2) + motorStartVoltage);
+    	}
+    	else
+    	{
+        	return 0.0; // deadband
+    	}
     }
 }

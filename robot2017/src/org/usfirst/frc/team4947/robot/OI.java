@@ -5,8 +5,8 @@ import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import org.usfirst.frc.team4947.robot.commands.DoorClose;
 import org.usfirst.frc.team4947.robot.commands.DoorOpen;
 import org.usfirst.frc.team4947.robot.commands.DriveArcade;
-import org.usfirst.frc.team4947.robot.commands.DriveFast;
 import org.usfirst.frc.team4947.robot.commands.DriveForward;
+import org.usfirst.frc.team4947.robot.commands.DriveNeutral;
 import org.usfirst.frc.team4947.robot.commands.DriveRotate;
 import org.usfirst.frc.team4947.robot.commands.DriveSlow;
 import org.usfirst.frc.team4947.robot.commands.DriveStop;
@@ -119,7 +119,7 @@ public class OI {
         SmartDashboard.putData("DriveForward", new DriveForward(0.5,0.8));
         SmartDashboard.putData("DriveRotate", new DriveRotate(0.5,0.8));
         SmartDashboard.putData("DriveStop", new DriveStop());
-        SmartDashboard.putData("DriveFast", new DriveFast());
+        SmartDashboard.putData("DriveNeutral", new DriveNeutral());
         SmartDashboard.putData("DriveSlow", new DriveSlow());
         SmartDashboard.putData("DriveTrainPTODisengage", new              DriveTrainPTODisengage());
         SmartDashboard.putData("DriveTrainPTOEngage", new DriveTrainPTOEngage());

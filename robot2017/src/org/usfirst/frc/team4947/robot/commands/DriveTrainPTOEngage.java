@@ -22,7 +22,7 @@ public class DriveTrainPTOEngage extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.ptoSolenoid.set(false);
+		Robot.driveTrain.ptoSolenoid.set(true);
     	
     }
 
