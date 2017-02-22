@@ -1,18 +1,22 @@
 package org.usfirst.frc.team4947.robot.commands;
 
 import org.usfirst.frc.team4947.robot.Robot;
+import org.usfirst.frc.team4947.robot.OI.XBoxAxis;
+import org.usfirst.frc.team4947.robot.OI.XBoxButton;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class DriveStop extends Command {
+public class DriveBackwardRewind extends Command {
 
-    public DriveStop() {
-    	requires(Robot.driveTrain);
+	public double RewindSpeedParameter = 0.6;
+	
+    public DriveBackwardRewind() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.driveTrain);
     }
 
     // Called just before this Command runs the first time
@@ -21,14 +25,14 @@ public class DriveStop extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.leftMotor1.set(0.0);
-    	Robot.driveTrain.leftMotor2.set(0.0);
-    	Robot.driveTrain.leftMotor3.set(0.0);
-    	Robot.driveTrain.rightMotor1.set(0.0);
-    	Robot.driveTrain.rightMotor2.set(0.0);
-    	Robot.driveTrain.rightMotor3.set(0.0);
-    	Robot.driveTrain.ptoSolenoid.set(false);
-    	Robot.driveTrain.speedSolenoid.set(false);
+    	if( Robot.oi.getJoystickDriverButton(XBoxButton.RB))
+    	{
+    		Robot.driveTrain.DriveArcadeSafe(- RewindSpeedParameter , 0);
+    	}
+    	else
+    	{
+    		Robot.driveTrain.DriveArcadeSafe(0, 0);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -43,6 +47,5 @@ public class DriveStop extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }

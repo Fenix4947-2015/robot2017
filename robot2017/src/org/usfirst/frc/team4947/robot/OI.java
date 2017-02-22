@@ -19,15 +19,20 @@ import org.usfirst.frc.team4947.robot.commands.GripperExtend;
 import org.usfirst.frc.team4947.robot.commands.GripperMoveManual;
 import org.usfirst.frc.team4947.robot.commands.GripperMoveTo;
 import org.usfirst.frc.team4947.robot.commands.GripperOpen;
+import org.usfirst.frc.team4947.robot.commands.GripperOpenManualToggle;
 import org.usfirst.frc.team4947.robot.commands.GripperRetract;
 import org.usfirst.frc.team4947.robot.commands.GripperUp;
+import org.usfirst.frc.team4947.robot.commands.GripperUpManualToggle;
 import org.usfirst.frc.team4947.robot.commands.IntakeDefault;
 import org.usfirst.frc.team4947.robot.commands.IntakeIn;
 import org.usfirst.frc.team4947.robot.commands.IntakeOut;
 import org.usfirst.frc.team4947.robot.commands.RobotLift;
+import org.usfirst.frc.team4947.robot.commands.RobotPickGear;
 import org.usfirst.frc.team4947.robot.commands.RobotPlaceGear;
+import org.usfirst.frc.team4947.robot.commands.StopAll;
 import org.usfirst.frc.team4947.robot.commands.WinchClose;
 import org.usfirst.frc.team4947.robot.commands.WinchOpen;
+import org.usfirst.frc.team4947.robot.commands.RobotLift;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -108,12 +113,18 @@ public class OI {
 
         // TODO Link button state to execute commands
      // TODO Link button state to execute commands
-       // driverA.whileHeld(new BallPickUp());
-       // driverB.whileHeld(new BallAlignShoot());
-        //driverB.whileHeld(new BallShoot());
-        //driverX.whenPressed(new BallAlign());
-        driverA.whenPressed(new DriveTrainPTOEngage());
-        driverB.whenReleased(new DriveTrainPTODisengage());
+
+        driverA.whileHeld(new IntakeIn());
+        driverA.whenPressed(new RobotPickGear());
+        driverX.whenPressed(new GripperOpenManualToggle()); // toggle on/off
+        
+        
+        driverLB.whileHeld(new GripperMoveManual());
+        driverY.whenPressed(new RobotPlaceGear());
+        driverB.whenPressed(new GripperUpManualToggle()); //FAIRE UN TOGGLE
+        driverStart.whenPressed(new StopAll());
+        driverBack.whenPressed(new RobotLift()); //RB will perform the rewind as pressed. 
+        
         
         SmartDashboard.putData("DriveArcade", new DriveArcade());
         SmartDashboard.putData("DriveForward", new DriveForward(0.5,0.8));

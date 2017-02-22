@@ -5,19 +5,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class RobotLift extends CommandGroup {
+public class RobotPickGear extends CommandGroup {
 
-    public RobotLift() {
+    public RobotPickGear() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    	
-    	addSequential(new DriveStop());
-    	addSequential(new DriveNeutral());
-    	addSequential(new WinchClose());
-    	addSequential(new DriveTrainPTOEngage());
-    	addSequential(new DriveBackwardRewind());
 
         // To run multiple commands at the same time,
         // use addParallel()

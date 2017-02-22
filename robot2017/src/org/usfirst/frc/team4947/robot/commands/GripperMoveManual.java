@@ -25,8 +25,24 @@ public class GripperMoveManual extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double rotateValue = Robot.oi.getJoystickDriverAxis(XBoxAxis.LeftStickX, 0.25);
-    	Robot.gripper.motor.set(rotateValue*0.6);
+    	
+    	// Laterally control the left right axis with motor.
+    	double lateralDeadband = 0.5;
+    	double rotateValue = Robot.oi.getJoystickDriverAxis(XBoxAxis.RightStickX, lateralDeadband);
+    	Robot.gripper.motor.set(rotateValue*0.5);
+    	
+    	// Control the extension and retraction of the gripper with the pneumatics. 
+    	double extensionDeadBand = 0.75;
+    	double extendValue = Robot.oi.getJoystickDriverAxis(XBoxAxis.RightStickY, extensionDeadBand);
+    	if(extendValue>extensionDeadBand)
+    	{
+    		Robot.gripper.extendGripperSolenoid.set(true);
+    	}
+    	else if (-extensionDeadBand > extendValue)
+    	{
+    		Robot.gripper.extendGripperSolenoid.set(false);
+    	}
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

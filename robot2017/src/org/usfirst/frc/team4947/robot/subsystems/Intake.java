@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4947.robot.subsystems;
 
 import org.usfirst.frc.team4947.robot.commands.IntakeDefault;
+import org.usfirst.frc.team4947.robot.commands.IntakeOut;
 
 import com.ctre.CANTalon;
 
@@ -16,7 +17,7 @@ public class Intake extends Subsystem {
     public DigitalInput intakeGearInput = new DigitalInput(2);
 
     public void initDefaultCommand() {
-        setDefaultCommand(new IntakeDefault());
+        setDefaultCommand(new IntakeOut());
     }
 }
 
