@@ -13,10 +13,12 @@ public class RobotPlaceGear extends Command {
 	double[] lastX; 
 	double[] lastY; 
 	double[] area ; 
+	boolean foundAnswer = false; 
+	double PixeltoMMScale = 500/620 ; //500mm for 620 px
     public RobotPlaceGear() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.gripper);
+    	//requires(Robot.gripper);
     	table = NetworkTable.getTable("GRIP/myContoursReport");
     	
     }
@@ -26,7 +28,8 @@ public class RobotPlaceGear extends Command {
     	lastX = new double[0]; 
 		lastY = new double[0]; 
 		area = new double[0]; 
-	setTimeout(30);
+	setTimeout(15);
+	foundAnswer = false;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -39,6 +42,7 @@ public class RobotPlaceGear extends Command {
 		//1280 X 720 pixels in image  ... en fait cEst 640 x 360 sur la webcam, dans sa config par defaut. 
 		boolean itworks = true;
 		if(itworks)
+		{
 			if(1==BlobCenterX.length)
 			{
 				Xprocessing[0] = BlobCenterX[0];
@@ -57,31 +61,31 @@ public class RobotPlaceGear extends Command {
 			}
 			double middle = (Xprocessing[0] + Xprocessing[1])*0.5; // this is the location of the pin relative to camera. 
 			
+			double desiredOffset = (middle - 310)*PixeltoMMScale;//todo validate scaling
 			
-			if (middle<310)
+			if(itworks) // todo make a check and validate if vision processing worked. else. pass. 
 			{
-				Robot.gripper.motor.set(0.3);
+				foundAnswer = true;
+				new GripperMoveTo(desiredOffset,0.75);	
 			}
-			else if (310<=middle)
-			{
-				Robot.gripper.motor.set(-0.3);
-			}
-		else
-		{	
-			Robot.gripper.motor.set(0.0);
+			
+			
 		}
-		//		Robot.exampleSubsystem.PistonBench.set(true);
-
+		else
+		{
+				
+		}
+				
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return isTimedOut();
+    	return (isTimedOut() || foundAnswer);
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.gripper.motor.set(0);
+    	//Robot.gripper.DartMotorStop();
 	}
     
 

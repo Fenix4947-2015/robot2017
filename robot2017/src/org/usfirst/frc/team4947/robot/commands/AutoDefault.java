@@ -17,6 +17,7 @@ public class AutoDefault extends CommandGroup {
  
     	addSequential(new DriveTrainPTODisengage());
     	addSequential(new DriveSlow());
+    	addParallel(new RobotPickGear());
         // To run multiple commands at the same time,
         // use addParallel()
         // e.g. addParallel(new Command1());

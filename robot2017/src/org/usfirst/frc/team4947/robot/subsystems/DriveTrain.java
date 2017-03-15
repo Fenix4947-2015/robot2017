@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DriveTrain extends Subsystem {
@@ -26,6 +27,7 @@ public class DriveTrain extends Subsystem {
 	public Solenoid ptoSolenoid = new Solenoid(6);
 	//public Solenoid ptoSolenoidRight = new Solenoid(2);
 	
+	private static final double kVoltsPerDegreePerSecond = 0.0128/2;
 	public AnalogGyro gyro = new AnalogGyro(1);
 	
 	public Counter encoderLeft;// = new Counter();//(0);//0);
@@ -37,8 +39,11 @@ public class DriveTrain extends Subsystem {
 	private RobotDrive robotDrive2 = new RobotDrive(leftMotor2, rightMotor2);
 	private RobotDrive robotDrive3 = new RobotDrive(leftMotor3, rightMotor3);
 
+	public PowerDistributionPanel powerDistPanel = new PowerDistributionPanel(2);
+	
 	public DriveTrain()
 	{
+		gyro.setSensitivity(kVoltsPerDegreePerSecond);
 		
 		robotDrive.setSafetyEnabled(false);
 		
@@ -62,7 +67,7 @@ public class DriveTrain extends Subsystem {
 		//rightMotor3.set(rightMotor1.getDeviceID());
 		
 		encoderLeft= new Counter();
-		encoderLeft.setUpSource(0);
+		encoderLeft.setUpSource(0); // Mapper sur les DIO
 		encoderLeft.setUpDownCounterMode();
 		encoderLeft.setMaxPeriod(0.1);
 		encoderLeft.setUpdateWhenEmpty(true);

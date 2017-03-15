@@ -11,41 +11,44 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class GripperMoveTo extends Command {
 
-	private int position;
+	private double position;
 	private double speed;
-	private int tolerance = 5;
-    public GripperMoveTo(int Position,double Speed) {
+	private int tolerance = 2;
+	private double lastPotAngle=0;
+    public GripperMoveTo(double Position,double Speed) {
     	
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	position = Position;
-    	speed = Speed;
+    	position = Position; // value in mm
+    	speed = Speed; // value in percent. dart stall speed around 20% 
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	lastPotAngle = Robot.gripper.DartPot.get();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	int currentPosition = Robot.gripper.motor.getPulseWidthPosition();
-    	Robot.gripper.motor.set(speed);
+    	lastPotAngle = Robot.gripper.RecursiveFilter(Robot.gripper.DartPot.get(), lastPotAngle);
+    	double currentPosition = lastPotAngle;
+    	
     	if(currentPosition < position){
-    		Robot.gripper.motor.set(speed);
+    		Robot.gripper.DartMotorMoveSafe(speed);
     	}
     	else if (currentPosition > position){
-    		Robot.gripper.motor.set(-speed);
+    		Robot.gripper.DartMotorMoveSafe(-speed);
     	}		
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Math.abs( Robot.gripper.motor.getPulseWidthPosition ()  - position )< tolerance;
+        return Math.abs( lastPotAngle - position )< tolerance;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.gripper.motor.set(0.0);
+    	Robot.gripper.DartMotorStop();
     }
 
     // Called when another command which requires one or more of the same
