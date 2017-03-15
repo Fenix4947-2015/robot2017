@@ -13,13 +13,14 @@ public class DriveForward extends Command {
 	private double speed;
 	private double distance;
 	private double error;
-	private final double TOLERANCE = .1;
-	private final double KP = -1.0 / 5.0;
-
+	private final double TOLERANCE = 100; //mm
+	private final double KP = -1.0;
+	private double initPos = 0;
+	
 	public DriveForward(double dist) {
 		this(dist, 0.5);
 	}
-
+// tout en mm
 	public DriveForward(double distance, double speed) {
 		requires(Robot.driveTrain);
 		
@@ -28,18 +29,18 @@ public class DriveForward extends Command {
 	}
 
 	protected void initialize() {
-		//Robot.driveTrain.setPosition(0);
+		initPos = Robot.driveTrain.encoderLeft.getDistance();
 	}
 
 	protected void execute() {
-	//	error = (distance - Robot.mo());
-		
-		if (speed * KP * error >= speed) {
-			//Robot.driveTrain.tankDrive(speed, speed);
+		error = (distance - (Robot.driveTrain.encoderLeft.getDistance()-initPos) );
+		// error is positive if need to go forward, 
+		if (error >= 0) {
+			Robot.driveTrain.DriveArcadeSafe(speed, 0);
 		} 
-		else {
-			//Robot.driveTrain.tankDrive(speed * KP * error, speed * KP * error);
-		}
+		else if (0 >= error) {
+			Robot.driveTrain.DriveArcadeSafe(-speed, 0);
+		} 		
 	}
 
 	protected boolean isFinished() {

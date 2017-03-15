@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import org.usfirst.frc.team4947.robot.commands.DoorClose;
 import org.usfirst.frc.team4947.robot.commands.DoorOpen;
 import org.usfirst.frc.team4947.robot.commands.DriveArcade;
+import org.usfirst.frc.team4947.robot.commands.DriveBackwardRewind;
 import org.usfirst.frc.team4947.robot.commands.DriveForward;
 import org.usfirst.frc.team4947.robot.commands.DriveNeutral;
 import org.usfirst.frc.team4947.robot.commands.DriveRotate;
@@ -21,17 +22,19 @@ import org.usfirst.frc.team4947.robot.commands.GripperMoveTo;
 import org.usfirst.frc.team4947.robot.commands.GripperOpen;
 import org.usfirst.frc.team4947.robot.commands.GripperOpenManualToggle;
 import org.usfirst.frc.team4947.robot.commands.GripperRetract;
+import org.usfirst.frc.team4947.robot.commands.GripperSmartClose;
 import org.usfirst.frc.team4947.robot.commands.GripperUp;
 import org.usfirst.frc.team4947.robot.commands.GripperUpManualToggle;
 import org.usfirst.frc.team4947.robot.commands.IntakeDefault;
 import org.usfirst.frc.team4947.robot.commands.IntakeIn;
 import org.usfirst.frc.team4947.robot.commands.IntakeOut;
+import org.usfirst.frc.team4947.robot.commands.RobotEngageGear;
 import org.usfirst.frc.team4947.robot.commands.RobotLift;
+import org.usfirst.frc.team4947.robot.commands.RobotMoveGripperDown;
+import org.usfirst.frc.team4947.robot.commands.RobotMoveGripperUp;
 import org.usfirst.frc.team4947.robot.commands.RobotPickGear;
-import org.usfirst.frc.team4947.robot.commands.RobotPlaceGear;
+import org.usfirst.frc.team4947.robot.commands.RobotVisionPlaceDart;
 import org.usfirst.frc.team4947.robot.commands.StopAll;
-import org.usfirst.frc.team4947.robot.commands.WinchClose;
-import org.usfirst.frc.team4947.robot.commands.WinchOpen;
 import org.usfirst.frc.team4947.robot.commands.RobotLift;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -120,43 +123,51 @@ public class OI {
         
         
         driverLB.whileHeld(new GripperMoveManual());
-        driverY.whenPressed(new RobotPlaceGear());
+        driverY.whenPressed(new RobotVisionPlaceDart());
         driverB.whenPressed(new GripperUpManualToggle()); //FAIRE UN TOGGLE
         driverStart.whenPressed(new StopAll());
         driverBack.whenPressed(new RobotLift()); //RB will perform the rewind as pressed. 
         
+
+        SmartDashboard.putData("DoorOpen", new DoorOpen());
+        SmartDashboard.putData("DoorClose", new DoorClose());
+        
+        SmartDashboard.putData("Monte sur Corde", new DriveBackwardRewind());
         
         SmartDashboard.putData("DriveArcade", new DriveArcade());
-        SmartDashboard.putData("DriveForward", new DriveForward(0.5,0.8));
-        SmartDashboard.putData("DriveRotate", new DriveRotate(0.5,0.8));
+        SmartDashboard.putData("DriveForward 0.5m", new DriveForward(500,0.8));
+        SmartDashboard.putData("DriveRotate +90deg", new DriveRotate(90,0.5));
         SmartDashboard.putData("DriveStop", new DriveStop());
         SmartDashboard.putData("DriveNeutral", new DriveNeutral());
-        SmartDashboard.putData("DriveSlow", new DriveSlow());
-        SmartDashboard.putData("DriveTrainPTODisengage", new              DriveTrainPTODisengage());
+        SmartDashboard.putData("Drive Gearbox Engaged", new DriveSlow());
+        SmartDashboard.putData("DriveTrainPTODisengage", new DriveTrainPTODisengage());
         SmartDashboard.putData("DriveTrainPTOEngage", new DriveTrainPTOEngage());
         
         SmartDashboard.putData("GripperClose", new GripperClose());
         SmartDashboard.putData("GripperDefault", new GripperDefault());
         SmartDashboard.putData("GripperDown", new GripperDown());
         SmartDashboard.putData("GripperExtend", new GripperExtend());
-        SmartDashboard.putData("GripperMoveTo", new GripperMoveTo(50,0.1));
         SmartDashboard.putData("GripperMoveManual", new GripperMoveManual());
+        SmartDashboard.putData("GripperMoveTo LEFT", new GripperMoveTo(-65,0.5)); 
+        SmartDashboard.putData("GripperMoveTo CENTER", new GripperMoveTo(0,0.5));  
+        SmartDashboard.putData("GripperMoveTo RIGHT", new GripperMoveTo(65,0.5)); 
         SmartDashboard.putData("GripperOpen", new GripperOpen());
+        SmartDashboard.putData("Gripper Open/Close Toggle", new GripperOpenManualToggle());
         SmartDashboard.putData("GripperRetract", new GripperRetract());
+        SmartDashboard.putData("Gripper Smart Close ", new GripperSmartClose());
         SmartDashboard.putData("GripperUp", new GripperUp());
-        SmartDashboard.putData("DoorOpen", new DoorOpen());
-        SmartDashboard.putData("DoorClose", new DoorClose());
-
+        SmartDashboard.putData("Gripper Up/Down Toggle", new GripperUpManualToggle());
         
         SmartDashboard.putData("IntakeDefault", new IntakeDefault());
         SmartDashboard.putData("IntakeIn", new IntakeIn());
-        SmartDashboard.putData("IntakeOut", new IntakeOut());
-        
-        SmartDashboard.putData("RobotPlaceGear", new RobotPlaceGear());
-        
-        SmartDashboard.putData("WinchClose", new WinchClose());
-        SmartDashboard.putData("WinchOpen", new WinchOpen());
+        SmartDashboard.putData("IntakeOut", new IntakeOut());        
+
+        SmartDashboard.putData("Engage Gear on Peg Macro", new RobotEngageGear());
         SmartDashboard.putData("RobotLift", new RobotLift());
+        SmartDashboard.putData("Gripper Down Macro", new RobotMoveGripperDown());
+        SmartDashboard.putData("Gripper Down Macro", new RobotMoveGripperUp());
+        SmartDashboard.putData("Pick gear Macro", new RobotPickGear());
+        SmartDashboard.putData("Robot Vision position Gripper", new RobotVisionPlaceDart());        
     }
     
     public double getJoystickDriverAxis(XBoxAxis axis) {

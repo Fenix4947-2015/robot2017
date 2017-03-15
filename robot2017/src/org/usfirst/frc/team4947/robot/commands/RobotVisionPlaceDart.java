@@ -8,14 +8,14 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 /**
  *
  */
-public class RobotPlaceGear extends Command {
+public class RobotVisionPlaceDart extends Command {
 	NetworkTable table ;
 	double[] lastX; 
 	double[] lastY; 
 	double[] area ; 
 	boolean foundAnswer = false; 
 	double PixeltoMMScale = 500/620 ; //500mm for 620 px
-    public RobotPlaceGear() {
+    public RobotVisionPlaceDart() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	//requires(Robot.gripper);

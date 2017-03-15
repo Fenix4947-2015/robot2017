@@ -37,11 +37,6 @@
 			<locationURI>PARENT-3-PROJECT_LOC/workspace/robot2017/src/org/usfirst/frc/team4947/robot/commands/DriveNeutral.java</locationURI>
 		</link>
 		<link>
-			<name>src/org/usfirst/frc/team4947/robot/commands/DriveSlow.java</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/workspace/robot2017/src/org/usfirst/frc/team4947/robot/commands/DriveSlow.java</locationURI>
-		</link>
-		<link>
 			<name>src/org/usfirst/frc/team4947/robot/commands/GripperMoveManual.java</name>
 			<type>1</type>
 			<locationURI>PARENT-3-PROJECT_LOC/workspace/robot2017/src/org/usfirst/frc/team4947/robot/commands/GripperMoveManual.java</locationURI>

@@ -40,6 +40,7 @@ public class DriveArcade extends Command {
     	//int encl = Robot.driveTrain.encLeft.get();
     	SmartDashboard.putNumber("encoderLeft", distLeft);
     	SmartDashboard.putNumber("encoderRight", distRight);
+    	SmartDashboard.putNumber("GyroArcade", Robot.driveTrain.gyro.getAngle());
     	//SmartDashboard.putNumber("encl", encl);
     	
     }

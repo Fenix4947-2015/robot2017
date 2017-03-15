@@ -5,28 +5,31 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class AutoDefault extends CommandGroup {
+public class AutoGearMiddle extends CommandGroup {
 
-    public AutoDefault() {
+    public AutoGearMiddle() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    	//Robot.driveTrain.ptoSolenoid.set(true); // true Disengages PTO.
-    	//Robot.driveTrain.speedSolenoid.set(true); // true makes it slow. TODO VALIDATE
- 
-    	addParallel(new DriveTrainPTODisengage());
-    	addParallel(new DriveSlow());
-    	
-    	addParallel(new GripperClose());
-    	addParallel(new DoorClose());
-    	
+
         // To run multiple commands at the same time,
         // use addParallel()
         // e.g. addParallel(new Command1());
         //      addSequential(new Command2());
         // Command1 and Command2 will run in parallel.
 
+    	addSequential(new AutoDefault(),5);// Initialize the robot. max 5 sec. 
+    	addSequential(new DriveForward(2100,0.9)); //2430 mm from wall to turret (7pi 10 po) //TODO : Validate trajectory - robot length.
+    	addSequential(new RobotVisionPlaceDart());
+    	addSequential(new RobotEngageGear());
+    	
+    	addSequential(new DriveForward(-500,0.9)); 
+    	addSequential(new DriveRotate(-90,0.9));  // TODO : VALIDATE TRAJECTORY
+    	addSequential(new DriveForward(2000,0.9)); 
+    	addSequential(new DriveRotate(90,0.9));  // TODO : VALIDATE TRAJECTORY
+    	addSequential(new DriveForward(1000,0.9)); 
+    	
         // A command group will require all of the subsystems that each member
         // would require.
         // e.g. if Command1 requires chassis, and Command2 requires arm,

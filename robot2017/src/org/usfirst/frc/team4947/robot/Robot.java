@@ -3,13 +3,14 @@ package org.usfirst.frc.team4947.robot;
 
 import org.usfirst.frc.team4947.robot.commands.AutoDefault;
 import org.usfirst.frc.team4947.robot.commands.AutoForward;
+import org.usfirst.frc.team4947.robot.commands.AutoGearMiddle;
 import org.usfirst.frc.team4947.robot.commands.DriveTrainPTODisengage;
 //import org.usfirst.frc.team4947.robot.subsystems.Camera;
 //import org.usfirst.frc.team4947.robot.subsystems.Camera;
 import org.usfirst.frc.team4947.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4947.robot.subsystems.Gripper;
 import org.usfirst.frc.team4947.robot.subsystems.Intake;
-import org.usfirst.frc.team4947.robot.subsystems.Winch;
+
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -32,8 +33,7 @@ public class Robot extends IterativeRobot {
 	public static DriveTrain driveTrain;
 	public static Gripper gripper;
 	public static Intake intake;
-	public static Winch winch;
-	
+
     //public static Camera camera1;
    // public static Camera camera2;
    // public static CameraServer camera1;
@@ -54,7 +54,7 @@ public class Robot extends IterativeRobot {
 		driveTrain = new DriveTrain();
 		gripper = new Gripper();
 		intake = new Intake();
-		winch = new Winch();
+
 		CameraServer.getInstance().startAutomaticCapture();
 		CameraServer.getInstance().startAutomaticCapture();
 		oi = new OI();
@@ -63,7 +63,9 @@ public class Robot extends IterativeRobot {
 		// SmartDashboard.putData("Auto mode", chooser);
 		
 		autonomousChooser.addDefault("Auto Default", new AutoDefault());
-		autonomousChooser.addDefault("Auto Forward", new AutoForward());
+		autonomousChooser.addObject("Auto Forward", new AutoForward());
+		autonomousChooser.addObject("Auto Gear Middle", new AutoGearMiddle());
+		
 		//autonomousCommand = new AutoDefault();
 		
 		SmartDashboard.putData("AutoMode", autonomousChooser);

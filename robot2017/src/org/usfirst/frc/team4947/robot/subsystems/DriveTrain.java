@@ -28,10 +28,10 @@ public class DriveTrain extends Subsystem {
 	//public Solenoid ptoSolenoidRight = new Solenoid(2);
 	
 	private static final double kVoltsPerDegreePerSecond = 0.0128/2;
-	public AnalogGyro gyro = new AnalogGyro(1);
+	public AnalogGyro gyro = new AnalogGyro(0);
 	
 	public Counter encoderLeft;// = new Counter();//(0);//0);
-	public Counter encoderRight = new Counter();//(1);//1);
+	public Counter encoderRight;// = new Counter();//(1);//1);
 	//public Encoder encLeft = new Encoder(0, 0);
 	//public Encoder encRight = new Encoder(1, 1);
 	
@@ -39,7 +39,7 @@ public class DriveTrain extends Subsystem {
 	private RobotDrive robotDrive2 = new RobotDrive(leftMotor2, rightMotor2);
 	private RobotDrive robotDrive3 = new RobotDrive(leftMotor3, rightMotor3);
 
-	public PowerDistributionPanel powerDistPanel = new PowerDistributionPanel(2);
+	public PowerDistributionPanel powerDistPanel = new PowerDistributionPanel(1);
 	
 	public DriveTrain()
 	{
@@ -72,8 +72,8 @@ public class DriveTrain extends Subsystem {
 		encoderLeft.setMaxPeriod(0.1);
 		encoderLeft.setUpdateWhenEmpty(true);
 		encoderLeft.setReverseDirection(false);
-		encoderLeft.setSamplesToAverage(10);
-		encoderLeft.setDistancePerPulse(12);
+		encoderLeft.setSamplesToAverage(3);
+		encoderLeft.setDistancePerPulse(59); // mm with 8 pulse encoder. 
 		//encoderLeft.start();
 		//encoderLeft.startLiveWindowMode();// ???
 		
@@ -85,8 +85,8 @@ public class DriveTrain extends Subsystem {
 		encoderRight.setMaxPeriod(0.1);
 		encoderRight.setUpdateWhenEmpty(true);
 		encoderRight.setReverseDirection(false);
-		encoderRight.setSamplesToAverage(10);
-		encoderRight.setDistancePerPulse(12);
+		encoderRight.setSamplesToAverage(2);
+		encoderRight.setDistancePerPulse(235.62); // mm with 2 pulse encoder. 
 		encoderRight.startLiveWindowMode();// to add ???
 		
 		//encoderLeft.reset();

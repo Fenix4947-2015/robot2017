@@ -5,21 +5,21 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class AutoDefault extends CommandGroup {
+public class RobotMoveGripperUp extends CommandGroup {
 
-    public AutoDefault() {
+    public RobotMoveGripperUp() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    	//Robot.driveTrain.ptoSolenoid.set(true); // true Disengages PTO.
-    	//Robot.driveTrain.speedSolenoid.set(true); // true makes it slow. TODO VALIDATE
- 
-    	addParallel(new DriveTrainPTODisengage());
-    	addParallel(new DriveSlow());
+
+    	addSequential(new GripperRetract());
+    	addSequential(new DoorOpen());
     	
     	addParallel(new GripperClose());
-    	addParallel(new DoorClose());
+    	addParallel(new GripperMoveTo(0, 0.6)); // Go center
+    	
+    	addSequential(new GripperUp());
     	
         // To run multiple commands at the same time,
         // use addParallel()

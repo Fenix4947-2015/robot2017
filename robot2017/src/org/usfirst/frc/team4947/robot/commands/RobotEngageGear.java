@@ -5,21 +5,18 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class AutoDefault extends CommandGroup {
+public class RobotEngageGear extends CommandGroup {
 
-    public AutoDefault() {
+    public RobotEngageGear() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    	//Robot.driveTrain.ptoSolenoid.set(true); // true Disengages PTO.
-    	//Robot.driveTrain.speedSolenoid.set(true); // true makes it slow. TODO VALIDATE
- 
-    	addParallel(new DriveTrainPTODisengage());
-    	addParallel(new DriveSlow());
+    	addSequential(new DoorOpen());
+    	addSequential(new GripperExtend()); // TODO : Validate the extension with a sensor instead of timer.
+    	addSequential(new Pause(1));
+    	addSequential(new GripperOpen());
     	
-    	addParallel(new GripperClose());
-    	addParallel(new DoorClose());
     	
         // To run multiple commands at the same time,
         // use addParallel()

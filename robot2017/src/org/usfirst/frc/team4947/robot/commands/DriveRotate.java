@@ -13,8 +13,8 @@ public class DriveRotate extends Command {
 	private double angle;
 	private double speed;
 	private double WheelSpacing = 20*0.0254; // 20 inches to meter. 
-	private double convertspd2degpsec = 0.25; // to calculate with wheel spacing and linear speed. 
-	private double Tolerance = 2 ; // degree 
+	private double convertspd2degpsec = 1; // to calculate with wheel spacing and linear speed. 
+	private double Tolerance = 5 ; // degree 
 	 
     public DriveRotate(double AngleLeftDegrees, double SpeedDegPerSec) {
         requires(Robot.driveTrain);

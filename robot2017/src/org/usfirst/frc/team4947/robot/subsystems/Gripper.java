@@ -26,6 +26,10 @@ public class Gripper extends Subsystem {
     private double DartCenterPosOffset = 0 ; 
     public AnalogPotentiometer DartPot = new AnalogPotentiometer(1,350,-230); // This constructor creates an instance of the DART potentiometer that returns values in mm, with 0 approximately centered. the range allowed is 140 mm, thus -70 to 70 mm. Positive to the right, facing same direction as the robot.    
     
+    public DigitalInput DartCenter = new DigitalInput(2); // This constructor creates an instance of the DART potentiometer that returns values in mm, with 0 approximately centered. the range allowed is 140 mm, thus -70 to 70 mm. Positive to the right, facing same direction as the robot.    
+    
+    //public DigitalInput GearPresence = new DigitalInput(2);
+    
     // public PowerDistributionPanel power = new PowerDistributionPanel(0);
 
     

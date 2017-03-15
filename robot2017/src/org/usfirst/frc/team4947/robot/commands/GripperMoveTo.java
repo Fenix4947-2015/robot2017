@@ -5,6 +5,7 @@ import javax.swing.text.Position;
 import org.usfirst.frc.team4947.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -32,6 +33,9 @@ public class GripperMoveTo extends Command {
     protected void execute() {
     	lastPotAngle = Robot.gripper.RecursiveFilter(Robot.gripper.DartPot.get(), lastPotAngle);
     	double currentPosition = lastPotAngle;
+    	
+    	
+    	SmartDashboard.putBoolean("Dart Is Middle", Robot.gripper.DartCenter.get());
     	
     	if(currentPosition < position){
     		Robot.gripper.DartMotorMoveSafe(speed);
