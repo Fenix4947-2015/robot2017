@@ -14,12 +14,12 @@ public class AutoDefault extends CommandGroup {
         // these will run in order.
     	//Robot.driveTrain.ptoSolenoid.set(true); // true Disengages PTO.
     	//Robot.driveTrain.speedSolenoid.set(true); // true makes it slow. TODO VALIDATE
- 
-    	addParallel(new DriveTrainPTODisengage());
-    	addParallel(new DriveSlow());
     	
-    	addParallel(new GripperClose());
-    	addParallel(new DoorClose());
+    	addParallel(new GripperMoveHome());
+    	addSequential(new DriveTrainPTODisengage());
+    	addSequential(new DriveSlow());    	
+    	
+    	addSequential(new DoorClose());
     	
         // To run multiple commands at the same time,
         // use addParallel()

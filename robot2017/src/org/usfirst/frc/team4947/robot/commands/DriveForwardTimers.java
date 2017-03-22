@@ -1,26 +1,19 @@
 package org.usfirst.frc.team4947.robot.commands;
 
-import org.usfirst.frc.team4947.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class StopAll extends Command {
+public class DriveForwardTimers extends Command {
 
-    public StopAll() {
+    public DriveForwardTimers() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.driveTrain);
-    	requires(Robot.gripper);
-    	requires(Robot.intake);
-    	// Using all the requires to interrupt all other commands. 
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	setTimeout(0.02);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -29,7 +22,7 @@ public class StopAll extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return isTimedOut();
+        return false;
     }
 
     // Called once after isFinished returns true

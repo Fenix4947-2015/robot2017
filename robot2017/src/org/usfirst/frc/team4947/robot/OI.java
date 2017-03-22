@@ -2,6 +2,10 @@ package org.usfirst.frc.team4947.robot;
 
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 
+import org.usfirst.frc.team4947.robot.commands.AutoDefault;
+import org.usfirst.frc.team4947.robot.commands.AutoGearLeft;
+import org.usfirst.frc.team4947.robot.commands.AutoGearMiddle;
+import org.usfirst.frc.team4947.robot.commands.AutoGearRight;
 import org.usfirst.frc.team4947.robot.commands.DoorClose;
 import org.usfirst.frc.team4947.robot.commands.DoorOpen;
 import org.usfirst.frc.team4947.robot.commands.DriveArcade;
@@ -115,33 +119,40 @@ public class OI {
         JoystickButton helperRightStick = new JoystickButton(joystickHelper, XBoxButton.RightStick.getValue());
 
         // TODO Link button state to execute commands
-     // TODO Link button state to execute commands
+        // TODO Link button state to execute commands
 
-        driverA.whileHeld(new IntakeIn());
+        //driverA.whenPressed(new IntakeIn());
         driverA.whenPressed(new RobotPickGear());
         driverX.whenPressed(new GripperOpenManualToggle()); // toggle on/off
         
         
         driverLB.whileHeld(new GripperMoveManual());
         driverY.whenPressed(new RobotVisionPlaceDart());
-        driverB.whenPressed(new GripperUpManualToggle()); //FAIRE UN TOGGLE
+        driverB.whenPressed(new GripperUpManualToggle()); 
         driverStart.whenPressed(new StopAll());
         driverBack.whenPressed(new RobotLift()); //RB will perform the rewind as pressed. 
         
-
+        
+        SmartDashboard.putData("Debug Auto Default", new AutoDefault());
+        SmartDashboard.putData("Debug Auto Gear Center", new AutoGearMiddle());
+        SmartDashboard.putData("Debug Auto Gear Left", new AutoGearLeft());
+        SmartDashboard.putData("Debug Auto Gear Left", new AutoGearRight());
+        
         SmartDashboard.putData("DoorOpen", new DoorOpen());
         SmartDashboard.putData("DoorClose", new DoorClose());
         
         SmartDashboard.putData("Monte sur Corde", new DriveBackwardRewind());
         
         SmartDashboard.putData("DriveArcade", new DriveArcade());
-        SmartDashboard.putData("DriveForward 0.5m", new DriveForward(500,0.8));
+        SmartDashboard.putData("DriveAVANCER 0.5m", new DriveForward(500,0.8));
+        SmartDashboard.putData("DriveRECULER 0.5m", new DriveForward(-500,0.8));
         SmartDashboard.putData("DriveRotate +90deg", new DriveRotate(90,0.5));
+        SmartDashboard.putData("DriveRotate -90deg", new DriveRotate(-90,0.5));
         SmartDashboard.putData("DriveStop", new DriveStop());
         SmartDashboard.putData("DriveNeutral", new DriveNeutral());
         SmartDashboard.putData("Drive Gearbox Engaged", new DriveSlow());
         SmartDashboard.putData("DriveTrainPTODisengage", new DriveTrainPTODisengage());
-        SmartDashboard.putData("DriveTrainPTOEngage", new DriveTrainPTOEngage());
+		SmartDashboard.putData("DriveTrainPTOEngage", new DriveTrainPTOEngage());
         
         SmartDashboard.putData("GripperClose", new GripperClose());
         SmartDashboard.putData("GripperDefault", new GripperDefault());

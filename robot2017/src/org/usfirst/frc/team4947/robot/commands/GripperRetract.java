@@ -16,7 +16,7 @@ public class GripperRetract extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	setTimeout(0.05);
+    	setTimeout(0.75); // TODO Validate time needed
     }
 
     // Called repeatedly when this Command is scheduled to run

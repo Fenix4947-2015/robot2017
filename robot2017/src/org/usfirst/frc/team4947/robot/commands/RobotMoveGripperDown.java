@@ -12,7 +12,7 @@ public class RobotMoveGripperDown extends CommandGroup {
     	addSequential(new DoorOpen());
     	
     	addSequential(new GripperClose());
-    	addSequential(new GripperMoveTo(0, 0.6)); // Go center
+    	addSequential(new GripperMoveHome()); // Go center
     	
     	addSequential(new GripperDown());
     	

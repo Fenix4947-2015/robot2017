@@ -19,7 +19,7 @@ public class GripperUpManualToggle extends Command {
     protected void initialize() {
     	if(Robot.gripper.upGripperSolenoid.get() == true)
     	{
-    	Robot.gripper.upGripperSolenoid.set(false);
+    		Robot.gripper.upGripperSolenoid.set(false);
     	}
     	else
     	{

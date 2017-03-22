@@ -17,7 +17,7 @@ public class RobotMoveGripperUp extends CommandGroup {
     	addSequential(new DoorOpen());
     	
     	addParallel(new GripperClose());
-    	addParallel(new GripperMoveTo(0, 0.6)); // Go center
+    	addParallel(new GripperMoveHome()); // Go center
     	
     	addSequential(new GripperUp());
     	

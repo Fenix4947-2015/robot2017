@@ -20,7 +20,7 @@ public class AutoForward extends CommandGroup {
         // Command1 and Command2 will run in parallel.
 
     	addSequential(new AutoDefault(),5);// Initialize the robot. max 5 sec. 
-    	addSequential(new DriveForward(2450,0.9)); //2430 mm from wall to line (7pi 10 po)
+    	addSequential(new DriveForward(1955,0.25)); //2430 mm from wall to line (79.8 po) // TODO Increase ForwardSpeed.
     	
     	
         // A command group will require all of the subsystems that each member

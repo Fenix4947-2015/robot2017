@@ -14,7 +14,7 @@ public class GripperSmartClose extends Command {
     	requires(Robot.intake);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	setTimeout(5);
+    	setTimeout(15);
     }
 
     // Called just before this Command runs the first time

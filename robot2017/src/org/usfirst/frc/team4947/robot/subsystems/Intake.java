@@ -16,8 +16,8 @@ public class Intake extends Subsystem {
     public CANTalon intakeMotor = new CANTalon(16);
     public DigitalInput intakeGearInput = new DigitalInput(3);
 
-    public void initDefaultCommand() {
-        setDefaultCommand(new IntakeOut());
+    public void initDefaultCommand() {        
+    	setDefaultCommand(new IntakeDefault());
     }
 }
 

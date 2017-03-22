@@ -100,7 +100,14 @@ public class DriveTrain extends Subsystem {
 
     public void DriveArcadeSafe(double Speed, double Rotation) {
     	//ptoSolenoid.set(true);
-    	if(ptoSolenoid.get()==true)//pto disengaged
+    	
+    	double GoStraightCompensation = Speed * 0.075 ; // TODO Tune this value
+    	
+    	robotDrive.arcadeDrive(Speed, Rotation + GoStraightCompensation);   	
+    	robotDrive2.arcadeDrive(Speed, Rotation + GoStraightCompensation);
+    	robotDrive3.arcadeDrive(Speed, Rotation + GoStraightCompensation);
+    	
+    	/*if(ptoSolenoid.get()==true)//pto disengaged
     	{
 	    	robotDrive.arcadeDrive(Speed, Rotation);   	
 	    	robotDrive2.arcadeDrive(Speed, Rotation);
@@ -119,7 +126,7 @@ public class DriveTrain extends Subsystem {
     		robotDrive.arcadeDrive(Speed, Rotation);   	
 	    	robotDrive2.arcadeDrive(Speed, Rotation);
 	    	robotDrive3.arcadeDrive(Speed, Rotation);
-    	}
+    	}*/
     }
 }
 

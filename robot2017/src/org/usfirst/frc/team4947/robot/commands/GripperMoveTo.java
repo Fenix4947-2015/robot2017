@@ -14,7 +14,7 @@ public class GripperMoveTo extends Command {
 
 	private double position;
 	private double speed;
-	private int tolerance = 2;
+	private int tolerance = 3;
 	private double lastPotAngle=0;
     public GripperMoveTo(double Position,double Speed) {
     	
@@ -35,7 +35,8 @@ public class GripperMoveTo extends Command {
     	double currentPosition = lastPotAngle;
     	
     	
-    	SmartDashboard.putBoolean("Dart Is Middle", Robot.gripper.DartCenter.get());
+    	SmartDashboard.putNumber("Dart Is At Position", currentPosition);
+    	
     	
     	if(currentPosition < position){
     		Robot.gripper.DartMotorMoveSafe(speed);

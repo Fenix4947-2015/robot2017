@@ -3,6 +3,7 @@ package org.usfirst.frc.team4947.robot.commands;
 import org.usfirst.frc.team4947.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -17,6 +18,7 @@ public class GripperOpenManualToggle extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	SmartDashboard.putBoolean("Gear Is In", Robot.intake.intakeGearInput.get());
     	if(Robot.gripper.openGripperSolenoid.get() == true)
     	{
     	Robot.gripper.openGripperSolenoid.set(false);

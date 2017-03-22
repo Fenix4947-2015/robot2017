@@ -35,8 +35,8 @@ public class Gripper extends Subsystem {
     
     public Gripper(){
     	// Initialize State
-    	openGripperSolenoid.set(true);
-    	openDoorSolenoid.set(true);
+    	//openGripperSolenoid.set(true);
+    	//openDoorSolenoid.set(true);
     	
     	motor.setInverted(true);
     }
@@ -53,6 +53,7 @@ public class Gripper extends Subsystem {
     
     public boolean IsDartCentered()
     {    	
+    	//return DartCenter.get(); // TODO : Valider le fonctionnement 
     	double absDistToCenter = Math.abs(DartCenterPosOffset - DartPot.get());
     	return (absDistToCenter < DartCenteringTolerance);    
     }

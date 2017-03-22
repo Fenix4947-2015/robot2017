@@ -12,11 +12,10 @@ public class RobotEngageGear extends CommandGroup {
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    	addSequential(new DoorOpen());
-    	addSequential(new GripperExtend()); // TODO : Validate the extension with a sensor instead of timer.
-    	addSequential(new Pause(1));
-    	addSequential(new GripperOpen());
     	
+    	addSequential(new DoorOpen());
+    	addSequential(new GripperExtend()); 
+    	addSequential(new GripperOpen());
     	
         // To run multiple commands at the same time,
         // use addParallel()

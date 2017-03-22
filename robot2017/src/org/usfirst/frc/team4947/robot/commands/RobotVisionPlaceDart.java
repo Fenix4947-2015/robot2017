@@ -4,6 +4,7 @@ import org.usfirst.frc.team4947.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -13,6 +14,10 @@ public class RobotVisionPlaceDart extends Command {
 	double[] lastX; 
 	double[] lastY; 
 	double[] area ; 
+	double DartCenterToCameraCenterOffset = 0 ; // mm. Dart 0 Position to Camera vision axis. The + - direction of value is in the Dart convention
+	// TODO : Update the Dart to camera offset value. 
+	
+	int PictureXPxNumber = 640; // TODO Validate Value
 	boolean foundAnswer = false; 
 	double PixeltoMMScale = 500/620 ; //500mm for 620 px
     public RobotVisionPlaceDart() {
@@ -28,8 +33,8 @@ public class RobotVisionPlaceDart extends Command {
     	lastX = new double[0]; 
 		lastY = new double[0]; 
 		area = new double[0]; 
-	setTimeout(15);
-	foundAnswer = false;
+		setTimeout(15);
+		foundAnswer = false;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -43,28 +48,39 @@ public class RobotVisionPlaceDart extends Command {
 		boolean itworks = true;
 		if(itworks)
 		{
+			if(0==BlobCenterX.length)
+			{
+				itworks = false;
+				Xprocessing[0] = 0.0;
+				Xprocessing[1] = 0.0;	
+			}
 			if(1==BlobCenterX.length)
 			{
-				Xprocessing[0] = BlobCenterX[0];
-				Xprocessing[1] = BlobCenterX[0];		
+				itworks = false;
+				Xprocessing[0] = 0.0;
+				Xprocessing[1] = 0.0;		
 			}
-			if(2==BlobCenterX.length)
+			else if(2==BlobCenterX.length)
 			{
 				Xprocessing[0] = BlobCenterX[0];
 				Xprocessing[1] = BlobCenterX[1];			
 			}
-			if(3<=BlobCenterX.length)
+			else if(3<=BlobCenterX.length)
 			{
+				itworks = false;
 				int[] mostSimilarIndexes = CheckSimilarityIndex(Area);
-				Xprocessing[0] = mostSimilarIndexes[0];
-				Xprocessing[1] = mostSimilarIndexes[1];		
+				Xprocessing[0] = BlobCenterX[mostSimilarIndexes[0]];
+				Xprocessing[1] = BlobCenterX[mostSimilarIndexes[1]];		
 			}
-			double middle = (Xprocessing[0] + Xprocessing[1])*0.5; // this is the location of the pin relative to camera. 
+		
 			
-			double desiredOffset = (middle - 310)*PixeltoMMScale;//todo validate scaling
+			SmartDashboard.putBoolean("Vision Detection OK", itworks);
 			
 			if(itworks) // todo make a check and validate if vision processing worked. else. pass. 
 			{
+				double middle = (Xprocessing[0] + Xprocessing[1])*0.5; // this is the location of the pin relative to camera. 
+				double desiredOffset = (middle - PictureXPxNumber*0.5 ) *PixeltoMMScale;  //TODO validate scaling
+				desiredOffset = desiredOffset + DartCenterToCameraCenterOffset ; 
 				foundAnswer = true;
 				new GripperMoveTo(desiredOffset,0.75);	
 			}
@@ -85,7 +101,7 @@ public class RobotVisionPlaceDart extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	//Robot.gripper.DartMotorStop();
+    	
 	}
     
 
@@ -108,7 +124,11 @@ public class RobotVisionPlaceDart extends Command {
 				}
 				else
 				{
-					if(Math.abs(comparator[i]-comparator[j])<smallestDifference)
+					if(i==j)
+					{
+						// Same item. to nothing
+					}
+					else if(Math.abs(comparator[i]-comparator[j])<smallestDifference)
 					{
 						smallestDifference = Math.abs(comparator[i]-comparator[j]);
 						mostsimilarindexes[0]=i;

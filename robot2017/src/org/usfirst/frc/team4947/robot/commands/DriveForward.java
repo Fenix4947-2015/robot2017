@@ -20,8 +20,9 @@ public class DriveForward extends Command {
 	public DriveForward(double dist) {
 		this(dist, 0.5);
 	}
-// tout en mm
-	public DriveForward(double distance, double speed) {
+
+	public DriveForward(double distance, double speed) // distance en mm, speed en % moteur
+	{
 		requires(Robot.driveTrain);
 		
 		this.distance = distance;
