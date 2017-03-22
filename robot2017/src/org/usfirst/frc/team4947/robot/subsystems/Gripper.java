@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -82,6 +83,12 @@ public class Gripper extends Subsystem {
     	{ // if down, cannot extend. 
     		extendGripperSolenoid.set(true);
     	}
+    }
+    
+    public void log()
+    {
+    	SmartDashboard.putNumber("Dart Is At Position", DartPot.get());
+    	SmartDashboard.putBoolean("Dart Home Switch", DartCenter.get());
     }
     
 }

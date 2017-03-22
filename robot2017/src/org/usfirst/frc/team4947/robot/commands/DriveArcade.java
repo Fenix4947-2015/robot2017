@@ -28,11 +28,8 @@ public class DriveArcade extends Command {
     	double rotateValue = - Robot.oi.getJoystickDriverAxis(XBoxAxis.LeftStickX, 0.1)*0.65;
     	
     	//Robot.driveTrain.DriveArcadeSafe(SmoothRamp(moveValue,0.1), rotateValue);
+    	
     	Robot.driveTrain.DriveArcadeSafe(moveValue, rotateValue); // TODO Test smooth Ramp
-    	
-    	SmartDashboard.putNumber("ForwardSpeed", moveValue);
-    	SmartDashboard.putNumber("RotationSpeed", rotateValue);
-    	
     	int distLeft = Robot.driveTrain.encoderLeft.get();//.getDistance();
     	int distRight = Robot.driveTrain.encoderRight.get();//.getDistance();    
     	//int encl = Robot.driveTrain.encLeft.get();

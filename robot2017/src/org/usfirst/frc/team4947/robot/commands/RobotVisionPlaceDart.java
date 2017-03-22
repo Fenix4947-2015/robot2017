@@ -33,7 +33,7 @@ public class RobotVisionPlaceDart extends Command {
     	lastX = new double[0]; 
 		lastY = new double[0]; 
 		area = new double[0]; 
-		setTimeout(15);
+		setTimeout(2);
 		foundAnswer = false;
     }
 
@@ -76,7 +76,7 @@ public class RobotVisionPlaceDart extends Command {
 			
 			SmartDashboard.putBoolean("Vision Detection OK", itworks);
 			
-			if(itworks) // todo make a check and validate if vision processing worked. else. pass. 
+			if(itworks) // TODO make a check and validate if vision processing worked. else. pass. 
 			{
 				double middle = (Xprocessing[0] + Xprocessing[1])*0.5; // this is the location of the pin relative to camera. 
 				double desiredOffset = (middle - PictureXPxNumber*0.5 ) *PixeltoMMScale;  //TODO validate scaling

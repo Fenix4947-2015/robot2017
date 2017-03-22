@@ -34,10 +34,6 @@ public class GripperMoveTo extends Command {
     	lastPotAngle = Robot.gripper.RecursiveFilter(Robot.gripper.DartPot.get(), lastPotAngle);
     	double currentPosition = lastPotAngle;
     	
-    	
-    	SmartDashboard.putNumber("Dart Is At Position", currentPosition);
-    	
-    	
     	if(currentPosition < position){
     		Robot.gripper.DartMotorMoveSafe(speed);
     	}

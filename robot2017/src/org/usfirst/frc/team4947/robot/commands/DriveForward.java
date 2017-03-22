@@ -3,6 +3,7 @@ package org.usfirst.frc.team4947.robot.commands;
 import org.usfirst.frc.team4947.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This command drives the robot over a given distance with simple proportional
@@ -35,6 +36,7 @@ public class DriveForward extends Command {
 
 	protected void execute() {
 		error = (distance - (Robot.driveTrain.encoderLeft.getDistance()-initPos) );
+		SmartDashboard.putNumber("Forward Distance Remaining",error);
 		// error is positive if need to go forward, 
 		if (error >= 0) {
 			Robot.driveTrain.DriveArcadeSafe(speed, 0);

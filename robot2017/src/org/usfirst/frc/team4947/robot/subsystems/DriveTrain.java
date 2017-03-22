@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveTrain extends Subsystem {
 
@@ -100,8 +101,15 @@ public class DriveTrain extends Subsystem {
 
     public void DriveArcadeSafe(double Speed, double Rotation) {
     	//ptoSolenoid.set(true);
+    	SmartDashboard.putNumber("ForwardSpeed", Speed);
+    	SmartDashboard.putNumber("RotationSpeed", Rotation);
     	
-    	double GoStraightCompensation = Speed * 0.075 ; // TODO Tune this value
+    	double GoStraightCompensation = 0;
+    	if(Math.abs(Speed) > 0.1)
+    	{
+    		GoStraightCompensation = Speed * 0.01 + 0.08 * Math.signum(Speed)  ; // TODO Tune this value. Has a speed proportional component (friction in mechanism()  and a fixed component
+    	}
+    	SmartDashboard.putNumber("Go Straight Compensation", GoStraightCompensation);
     	
     	robotDrive.arcadeDrive(Speed, Rotation + GoStraightCompensation);   	
     	robotDrive2.arcadeDrive(Speed, Rotation + GoStraightCompensation);
@@ -127,6 +135,13 @@ public class DriveTrain extends Subsystem {
 	    	robotDrive2.arcadeDrive(Speed, Rotation);
 	    	robotDrive3.arcadeDrive(Speed, Rotation);
     	}*/
+    }
+    
+
+    public void log(){
+    	SmartDashboard.putNumber("GyroAngleAbsolute", gyro.getAngle());
+    	SmartDashboard.putNumber("LeftEncoder", encoderLeft.getDistance());
+    	SmartDashboard.putNumber("RightEncoder", encoderRight.getDistance());
     }
 }
 

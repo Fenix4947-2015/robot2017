@@ -63,13 +63,17 @@ public class Robot extends IterativeRobot {
 		// SmartDashboard.putData("Auto mode", chooser);
 		
 		autonomousChooser.addDefault("Auto Default", new AutoDefault());
-		autonomousChooser.addObject("Auto Forward", new AutoForward());
-		autonomousChooser.addObject("Auto Gear Middle", new AutoGearMiddle());
+		autonomousChooser.addDefault("Auto Forward", new AutoForward());
+		autonomousChooser.addDefault("Auto Gear Middle", new AutoGearMiddle());
 		
 		//autonomousCommand = new AutoDefault();
 		
 		SmartDashboard.putData("AutoMode", autonomousChooser);
 	
+        SmartDashboard.putData(driveTrain);
+        SmartDashboard.putData(intake);
+        SmartDashboard.putData(gripper);
+       
 	}
 
 	/**
@@ -132,6 +136,8 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
+		
+		log();
 	}
 
 	/**
@@ -140,6 +146,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		log();
 	}
 
 	/**
@@ -148,15 +155,16 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void testPeriodic() {
 		LiveWindow.run();
+		log();
 	}
 	
 
-	/*private void log() {
+	private void log() 
+	{
 		driveTrain.log();
 		intake.log();
-		gripper.log();
-		winch.log();
+		gripper.log();		
 		
-	}*/
+	}
 
 }
