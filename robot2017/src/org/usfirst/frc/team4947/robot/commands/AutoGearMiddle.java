@@ -21,7 +21,7 @@ public class AutoGearMiddle extends CommandGroup {
 
     	addSequential(new AutoDefault(),5);// Initialize the robot. max 5 sec. 
     	addSequential(new DriveForward(2100,0.9)); //2430 mm from wall to turret (7pi 10 po) //TODO : Validate trajectory - robot length.
-    	addSequential(new RobotVisionPlaceDart());
+    	addSequential(new CalculatePinLocation());
     	addSequential(new RobotEngageGear());
     	
     	/*addSequential(new DriveForward(-500,0.9)); 

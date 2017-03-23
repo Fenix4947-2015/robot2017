@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4947.robot.commands;
 
 import org.usfirst.frc.team4947.robot.Robot;
+import org.usfirst.frc.team4947.robot.subsystems.VisionSystem;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
@@ -9,7 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class RobotVisionPlaceDart extends Command {
+public class CalculatePinLocation extends Command {
 	NetworkTable table ;
 	double[] lastX; 
 	double[] lastY; 
@@ -20,10 +21,10 @@ public class RobotVisionPlaceDart extends Command {
 	int PictureXPxNumber = 640; // TODO Validate Value
 	boolean foundAnswer = false; 
 	double PixeltoMMScale = 500/620 ; //500mm for 620 px
-    public RobotVisionPlaceDart() {
+    public CalculatePinLocation() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	//requires(Robot.gripper);
+    	requires(Robot.visionSystem);
     	table = NetworkTable.getTable("GRIP/myContoursReport");
     	
     }
@@ -74,7 +75,7 @@ public class RobotVisionPlaceDart extends Command {
 			}
 		
 			
-			SmartDashboard.putBoolean("Vision Detection OK", itworks);
+						
 			
 			if(itworks) // TODO make a check and validate if vision processing worked. else. pass. 
 			{
@@ -82,9 +83,15 @@ public class RobotVisionPlaceDart extends Command {
 				double desiredOffset = (middle - PictureXPxNumber*0.5 ) *PixeltoMMScale;  //TODO validate scaling
 				desiredOffset = desiredOffset + DartCenterToCameraCenterOffset ; 
 				foundAnswer = true;
-				new GripperMoveTo(desiredOffset,0.75);	
+				
+				Robot.visionSystem.PinPositionVisionLocation = desiredOffset ;
+				
 			}
-			
+			else
+			{
+				Robot.visionSystem.PinPositionVisionLocation =  0;
+			}
+			Robot.visionSystem.VisionPinPositionSuccess = foundAnswer;	
 			
 		}
 		else

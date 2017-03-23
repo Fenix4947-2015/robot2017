@@ -37,7 +37,7 @@ import org.usfirst.frc.team4947.robot.commands.RobotLift;
 import org.usfirst.frc.team4947.robot.commands.RobotMoveGripperDown;
 import org.usfirst.frc.team4947.robot.commands.RobotMoveGripperUp;
 import org.usfirst.frc.team4947.robot.commands.RobotPickGear;
-import org.usfirst.frc.team4947.robot.commands.RobotVisionPlaceDart;
+import org.usfirst.frc.team4947.robot.commands.CalculatePinLocation;
 import org.usfirst.frc.team4947.robot.commands.StopAll;
 import org.usfirst.frc.team4947.robot.commands.RobotLift;
 
@@ -127,7 +127,7 @@ public class OI {
         
         
         driverLB.whileHeld(new GripperMoveManual());
-        driverY.whenPressed(new RobotVisionPlaceDart());
+        driverY.whenPressed(new CalculatePinLocation());
         driverB.whenPressed(new GripperUpManualToggle()); 
         driverStart.whenPressed(new StopAll());
         driverBack.whenPressed(new RobotLift()); //RB will perform the rewind as pressed. 
@@ -178,7 +178,7 @@ public class OI {
         SmartDashboard.putData("Gripper Down Macro", new RobotMoveGripperDown());
         SmartDashboard.putData("Gripper Down Macro", new RobotMoveGripperUp());
         SmartDashboard.putData("Pick gear Macro", new RobotPickGear());
-        SmartDashboard.putData("Robot Vision position Gripper", new RobotVisionPlaceDart());        
+        SmartDashboard.putData("Robot Vision position Gripper", new CalculatePinLocation());        
     }
     
     public double getJoystickDriverAxis(XBoxAxis axis) {

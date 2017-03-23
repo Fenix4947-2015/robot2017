@@ -3,14 +3,16 @@ package org.usfirst.frc.team4947.robot;
 
 import org.usfirst.frc.team4947.robot.commands.AutoDefault;
 import org.usfirst.frc.team4947.robot.commands.AutoForward;
+import org.usfirst.frc.team4947.robot.commands.AutoGearLeft;
 import org.usfirst.frc.team4947.robot.commands.AutoGearMiddle;
+import org.usfirst.frc.team4947.robot.commands.AutoGearRight;
 import org.usfirst.frc.team4947.robot.commands.DriveTrainPTODisengage;
 //import org.usfirst.frc.team4947.robot.subsystems.Camera;
 //import org.usfirst.frc.team4947.robot.subsystems.Camera;
 import org.usfirst.frc.team4947.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4947.robot.subsystems.Gripper;
 import org.usfirst.frc.team4947.robot.subsystems.Intake;
-
+import org.usfirst.frc.team4947.robot.subsystems.VisionSystem;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -33,6 +35,7 @@ public class Robot extends IterativeRobot {
 	public static DriveTrain driveTrain;
 	public static Gripper gripper;
 	public static Intake intake;
+	public static VisionSystem visionSystem;
 
     //public static Camera camera1;
    // public static Camera camera2;
@@ -62,18 +65,18 @@ public class Robot extends IterativeRobot {
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		// SmartDashboard.putData("Auto mode", chooser);
 		
-		autonomousChooser.addDefault("Auto Default", new AutoDefault());
-		autonomousChooser.addDefault("Auto Forward", new AutoForward());
-		autonomousChooser.addDefault("Auto Gear Middle", new AutoGearMiddle());
-		
+		autonomousChooser.addDefault("1 - Auto Default", new AutoDefault());
+		autonomousChooser.addDefault("2 - Auto Forward", new AutoForward());
+		autonomousChooser.addDefault("3 - Auto Gear Left", new AutoGearLeft());
+		autonomousChooser.addDefault("4 - Auto Gear Middle", new AutoGearMiddle());
+		autonomousChooser.addDefault("5 - Auto Gear Right", new AutoGearRight());
 		//autonomousCommand = new AutoDefault();
-		
 		SmartDashboard.putData("AutoMode", autonomousChooser);
 	
         SmartDashboard.putData(driveTrain);
         SmartDashboard.putData(intake);
         SmartDashboard.putData(gripper);
-       
+        SmartDashboard.putData(visionSystem);       
 	}
 
 	/**
@@ -164,7 +167,7 @@ public class Robot extends IterativeRobot {
 		driveTrain.log();
 		intake.log();
 		gripper.log();		
-		
+		visionSystem.log();
 	}
 
 }
